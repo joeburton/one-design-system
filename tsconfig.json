@@ -30,6 +30,9 @@
     /* Node types — required by Vite, Vitest, and scripts using fs/path/url */
     "types": ["node", "vite/client"],
 
+    /* Suppress type conflicts originating inside node_modules (e.g. vitest's bundled vite vs project vite) */
+    "skipLibCheck": true,
+
     /* Paths */
     "baseUrl": ".",
     "paths": {

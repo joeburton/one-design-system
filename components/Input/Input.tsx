@@ -45,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         <input ref={ref} id={id} disabled={disabled}
           aria-invalid={effectiveStatus === 'error' ? true : undefined}
           aria-describedby={describedBy}
-          className={cx(styles.input, startAdornment && styles.hasPrefix, endAdornment && styles.hasSuffix)}
+          className={cx(styles.input, Boolean(startAdornment) && styles.hasPrefix, Boolean(endAdornment) && styles.hasSuffix)}
           {...rest}
         />
         {endAdornment && <span className={styles.suffix} aria-hidden="true">{endAdornment}</span>}
