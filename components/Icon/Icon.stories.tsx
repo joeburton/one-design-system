@@ -9,15 +9,34 @@ const meta = {
   tags: ['autodocs'],
   parameters: { layout: 'centered' },
   argTypes: {
-    size:  { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
-    color: { control: 'select', options: ['inherit', 'default', 'subtle', 'muted', 'primary', 'success', 'warning', 'error', 'info'] },
+    size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
+    color: {
+      control: 'select',
+      options: [
+        'inherit',
+        'default',
+        'subtle',
+        'muted',
+        'primary',
+        'success',
+        'warning',
+        'error',
+        'info',
+      ],
+    },
   },
 } satisfies Meta<typeof Icon>;
 
 export default meta;
 
 const Label = ({ children }: { children: string }) => (
-  <span style={{ fontSize: 'var(--ds-typography-fontSize-xs)', color: 'var(--ds-color-text-subtle)', fontFamily: 'var(--ds-typography-fontFamily-body)' }}>
+  <span
+    style={{
+      fontSize: 'var(--ds-typography-fontSize-xs)',
+      color: 'var(--ds-color-text-subtle)',
+      fontFamily: 'var(--ds-typography-fontFamily-body)',
+    }}
+  >
     {children}
   </span>
 );
@@ -48,7 +67,9 @@ Sizes.storyName = 'All Sizes';
 
 export const Colours: StoryFn<typeof Icon> = () => (
   <Stack direction="row" gap="lg" align="center" wrap="wrap">
-    {(['default', 'subtle', 'muted', 'primary', 'success', 'warning', 'error', 'info'] as const).map((color) => (
+    {(
+      ['default', 'subtle', 'muted', 'primary', 'success', 'warning', 'error', 'info'] as const
+    ).map((color) => (
       <Stack key={color} direction="column" align="center" gap="xs">
         <NamedIcon name="info" size="lg" color={color} label={`info icon ${color}`} />
         <Label>{color}</Label>

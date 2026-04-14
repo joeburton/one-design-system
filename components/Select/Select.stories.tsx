@@ -3,9 +3,9 @@ import { Select } from './Select';
 import type { SelectItem } from './Select';
 
 const flatOptions: SelectItem[] = [
-  { value: 'react',   label: 'React' },
-  { value: 'vue',     label: 'Vue' },
-  { value: 'svelte',  label: 'Svelte' },
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'svelte', label: 'Svelte' },
   { value: 'angular', label: 'Angular', disabled: true },
 ];
 
@@ -13,17 +13,17 @@ const groupedOptions: SelectItem[] = [
   {
     label: 'Frontend',
     options: [
-      { value: 'react',  label: 'React' },
-      { value: 'vue',    label: 'Vue' },
+      { value: 'react', label: 'React' },
+      { value: 'vue', label: 'Vue' },
       { value: 'svelte', label: 'Svelte' },
     ],
   },
   {
     label: 'Backend',
     options: [
-      { value: 'node',   label: 'Node.js' },
+      { value: 'node', label: 'Node.js' },
       { value: 'python', label: 'Python' },
-      { value: 'go',     label: 'Go' },
+      { value: 'go', label: 'Go' },
     ],
   },
 ];

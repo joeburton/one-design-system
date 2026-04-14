@@ -16,7 +16,13 @@ import { Icon, NamedIcon, icons } from '../components/Icon/Icon';
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section style={{ marginBottom: 'var(--ds-spacing-layout-xl)' }}>
-      <H2 style={{ marginBottom: 'var(--ds-spacing-component-md)', borderBottom: '1px solid var(--ds-color-border-default)', paddingBottom: 'var(--ds-spacing-component-sm)' }}>
+      <H2
+        style={{
+          marginBottom: 'var(--ds-spacing-component-md)',
+          borderBottom: '1px solid var(--ds-color-border-default)',
+          paddingBottom: 'var(--ds-spacing-component-sm)',
+        }}
+      >
         {title}
       </H2>
       {children}
@@ -35,16 +41,24 @@ export function App() {
   const [dismissed, setDismissed] = useState(false);
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: 'var(--ds-color-background-default)', color: 'var(--ds-color-text-default)' }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        backgroundColor: 'var(--ds-color-background-default)',
+        color: 'var(--ds-color-text-default)',
+      }}
+    >
       {/* Header */}
-      <header style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 10,
-        backgroundColor: 'var(--ds-color-surface-default)',
-        borderBottom: '1px solid var(--ds-color-border-default)',
-        padding: 'var(--ds-spacing-component-md) var(--ds-spacing-layout-lg)',
-      }}>
+      <header
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          backgroundColor: 'var(--ds-color-surface-default)',
+          borderBottom: '1px solid var(--ds-color-border-default)',
+          padding: 'var(--ds-spacing-component-md) var(--ds-spacing-layout-lg)',
+        }}
+      >
         <Stack direction="row" justify="between" align="center">
           <Stack direction="row" align="center" gap="sm">
             <Icon label="One Design System logo" size="lg" color="primary">
@@ -64,11 +78,18 @@ export function App() {
       </header>
 
       {/* Main */}
-      <main style={{ maxWidth: '860px', margin: '0 auto', padding: 'var(--ds-spacing-layout-xl) var(--ds-spacing-layout-lg)' }}>
+      <main
+        style={{
+          maxWidth: '860px',
+          margin: '0 auto',
+          padding: 'var(--ds-spacing-layout-xl) var(--ds-spacing-layout-lg)',
+        }}
+      >
         <Stack gap="none">
           <H1 style={{ marginBottom: 'var(--ds-spacing-component-xs)' }}>Component Demo</H1>
           <Text color="subtle" style={{ marginBottom: 'var(--ds-spacing-layout-xl)' }}>
-            A live reference for every component in the library. Toggle the theme in the header to test dark mode.
+            A live reference for every component in the library. Toggle the theme in the header to
+            test dark mode.
           </Text>
 
           {/* ---------------------------------------------------------------- */}
@@ -81,9 +102,13 @@ export function App() {
               <Typography variant="h5">Heading 5</Typography>
               <Typography variant="h6">Heading 6</Typography>
               <Typography variant="body-lg">Body large — Lorem ipsum dolor sit amet.</Typography>
-              <Typography variant="body">Body — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typography>
+              <Typography variant="body">
+                Body — Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Typography>
               <Typography variant="body-sm">Body small — Lorem ipsum dolor sit amet.</Typography>
-              <Typography variant="caption" color="subtle">Caption — used for supplemental text.</Typography>
+              <Typography variant="caption" color="subtle">
+                Caption — used for supplemental text.
+              </Typography>
               <Typography variant="overline">Overline label</Typography>
               <Code>{'const greeting = "hello world";'}</Code>
             </Stack>
@@ -110,7 +135,9 @@ export function App() {
                 <Button loading>Loading</Button>
                 <Button disabled>Disabled</Button>
                 <Button iconLeft={<NamedIcon name="plus" size="sm" />}>With icon</Button>
-                <Button iconRight={<NamedIcon name="chevronDown" size="sm" />} variant="secondary">Trailing icon</Button>
+                <Button iconRight={<NamedIcon name="chevronDown" size="sm" />} variant="secondary">
+                  Trailing icon
+                </Button>
               </Stack>
               <Button fullWidth>Full width</Button>
             </Stack>
@@ -123,7 +150,7 @@ export function App() {
                 label="Default"
                 placeholder="Enter some text…"
                 value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
+                onChange={(e) => setInputValue(e.target.value)}
                 hint="This is a hint message."
               />
               <Input
@@ -146,7 +173,7 @@ export function App() {
                 label="Favourite fruit"
                 placeholder="Pick one…"
                 value={selectValue}
-                onChange={e => setSelectValue(e.target.value)}
+                onChange={(e) => setSelectValue(e.target.value)}
                 hint="Choose your favourite."
                 options={[
                   { value: 'apple', label: 'Apple' },
@@ -175,7 +202,11 @@ export function App() {
                   },
                 ]}
               />
-              <Select label="Error state" errorMessage="Please select an option." options={[{ value: 'a', label: 'Option A' }]} />
+              <Select
+                label="Error state"
+                errorMessage="Please select an option."
+                options={[{ value: 'a', label: 'Option A' }]}
+              />
             </Stack>
           </Section>
 
@@ -227,7 +258,9 @@ export function App() {
                   <H3>Bordered + elevated</H3>
                 </CardHeader>
                 <CardBody>
-                  <Text color="subtle">Uses <Code>elevation="md"</Code> and <Code>bordered</Code>.</Text>
+                  <Text color="subtle">
+                    Uses <Code>elevation="md"</Code> and <Code>bordered</Code>.
+                  </Text>
                 </CardBody>
               </Card>
 
@@ -246,7 +279,7 @@ export function App() {
           {/* ---------------------------------------------------------------- */}
           <Section title="Icon">
             <Stack direction="row" wrap="wrap" gap="md" align="center">
-              {(Object.keys(icons) as Array<keyof typeof icons>).map(name => (
+              {(Object.keys(icons) as Array<keyof typeof icons>).map((name) => (
                 <Stack key={name} align="center" gap="xs">
                   <NamedIcon name={name} size="lg" color="default" />
                   <Caption color="subtle">{name}</Caption>
@@ -260,7 +293,7 @@ export function App() {
             <Stack gap="md">
               <Text color="subtle">Row with gap and wrapping:</Text>
               <Stack direction="row" gap="sm" wrap="wrap">
-                {['One', 'Two', 'Three', 'Four', 'Five'].map(label => (
+                {['One', 'Two', 'Three', 'Four', 'Five'].map((label) => (
                   <Card key={label} padding="sm" elevation="xs">
                     <Text>{label}</Text>
                   </Card>
@@ -269,8 +302,12 @@ export function App() {
 
               <Text color="subtle">Column with center alignment:</Text>
               <Stack direction="column" align="center" gap="sm">
-                <Button variant="primary" style={{ width: '200px' }}>Centred button</Button>
-                <Button variant="secondary" style={{ width: '200px' }}>Centred button</Button>
+                <Button variant="primary" style={{ width: '200px' }}>
+                  Centred button
+                </Button>
+                <Button variant="secondary" style={{ width: '200px' }}>
+                  Centred button
+                </Button>
               </Stack>
             </Stack>
           </Section>
@@ -278,12 +315,16 @@ export function App() {
       </main>
 
       {/* Footer */}
-      <footer style={{
-        borderTop: '1px solid var(--ds-color-border-default)',
-        padding: 'var(--ds-spacing-component-lg) var(--ds-spacing-layout-lg)',
-        textAlign: 'center',
-      }}>
-        <Caption color="muted">One Design System — token-driven, theme-aware React component library</Caption>
+      <footer
+        style={{
+          borderTop: '1px solid var(--ds-color-border-default)',
+          padding: 'var(--ds-spacing-component-lg) var(--ds-spacing-layout-lg)',
+          textAlign: 'center',
+        }}
+      >
+        <Caption color="muted">
+          One Design System — token-driven, theme-aware React component library
+        </Caption>
       </footer>
     </div>
   );

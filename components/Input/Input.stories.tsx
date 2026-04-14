@@ -8,7 +8,7 @@ const meta = {
   tags: ['autodocs'],
   parameters: { layout: 'centered' },
   argTypes: {
-    size:   { control: 'select', options: ['sm', 'md', 'lg'] },
+    size: { control: 'select', options: ['sm', 'md', 'lg'] },
     status: { control: 'select', options: ['default', 'error', 'success', 'warning'] },
   },
   args: {

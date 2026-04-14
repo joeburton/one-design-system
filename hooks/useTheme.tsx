@@ -1,6 +1,11 @@
 import {
-  createContext, useCallback, useContext, useEffect,
-  useMemo, useState, type ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
 } from 'react';
 import type { ThemeName, ThemeContextValue } from '../tokens/types/tokens.types';
 
@@ -46,7 +51,7 @@ export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps): J
 
   const setTheme = useCallback((next: ThemeName) => setThemeState(next), []);
   const toggleTheme = useCallback(
-    () => setThemeState(prev => (prev === 'light' ? 'dark' : 'light')),
+    () => setThemeState((prev) => (prev === 'light' ? 'dark' : 'light')),
     []
   );
 

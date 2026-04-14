@@ -14,12 +14,12 @@ W3C spec      TypeScript types    :root / [data-theme]   CSS Modules
 
 ### Token layers
 
-| Layer | File | Purpose |
-|-------|------|---------|
-| **Primitive** | `tokens/primitive.tokens.json` | Raw values — colours, spacing, radii, shadows |
+| Layer                | File                                | Purpose                                                    |
+| -------------------- | ----------------------------------- | ---------------------------------------------------------- |
+| **Primitive**        | `tokens/primitive.tokens.json`      | Raw values — colours, spacing, radii, shadows              |
 | **Semantic (light)** | `tokens/semantic.light.tokens.json` | Contextual meaning — `color-brand-primary`, `elevation-md` |
-| **Semantic (dark)** | `tokens/semantic.dark.tokens.json` | Dark theme overrides only — references same primitives |
-| **Generated CSS** | `styles/tokens.css` | Output of transform script — consumed by browser |
+| **Semantic (dark)**  | `tokens/semantic.dark.tokens.json`  | Dark theme overrides only — references same primitives     |
+| **Generated CSS**    | `styles/tokens.css`                 | Output of transform script — consumed by browser           |
 
 ### Where TypeScript enforces safety
 
@@ -45,6 +45,7 @@ npm run tokens:build
 ```
 
 This runs `scripts/transform-tokens.ts` which:
+
 - Flattens primitive tokens into a lookup map
 - Resolves all `{reference}` values in semantic tokens
 - Outputs `styles/tokens.css` and `styles/themes/dark.css`
@@ -192,7 +193,7 @@ import { ThemeProvider } from './hooks/useTheme';
 
 <ThemeProvider>
   <App />
-</ThemeProvider>
+</ThemeProvider>;
 
 // Inside any component
 import { useTheme } from './hooks/useTheme';
@@ -204,6 +205,7 @@ function ThemeToggle() {
 ```
 
 The `ThemeProvider`:
+
 - Reads `localStorage` on mount (persists preference)
 - Falls back to `prefers-color-scheme` media query
 - Applies `data-theme="light"` or `data-theme="dark"` to `<html>`
@@ -249,16 +251,16 @@ CSS variable prefix: `--ds-` (design system)
 
 ## Scripts Reference
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Vite dev server |
-| `npm run build` | Production build |
+| Script                    | Description                  |
+| ------------------------- | ---------------------------- |
+| `npm run dev`             | Vite dev server              |
+| `npm run build`           | Production build             |
 | `npm run tokens:validate` | Validate token JSON with Zod |
-| `npm run tokens:build` | Transform tokens → CSS + TS |
-| `npm run storybook` | Storybook dev server |
-| `npm run build-storybook` | Build Storybook static site |
-| `npm run test` | Run all tests |
-| `npm run test:coverage` | Tests with coverage report |
-| `npm run typecheck` | TypeScript type checking |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier |
+| `npm run tokens:build`    | Transform tokens → CSS + TS  |
+| `npm run storybook`       | Storybook dev server         |
+| `npm run build-storybook` | Build Storybook static site  |
+| `npm run test`            | Run all tests                |
+| `npm run test:coverage`   | Tests with coverage report   |
+| `npm run typecheck`       | TypeScript type checking     |
+| `npm run lint`            | ESLint                       |
+| `npm run format`          | Prettier                     |

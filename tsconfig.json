@@ -36,12 +36,12 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-      "@/*":            ["./*"],
+      "@/*": ["./*"],
       "@components/*": ["./components/*"],
-      "@tokens/*":     ["./tokens/*"],
-      "@styles/*":     ["./styles/*"],
-      "@hooks/*":      ["./hooks/*"],
-      "@utils/*":      ["./utils/*"]
+      "@tokens/*": ["./tokens/*"],
+      "@styles/*": ["./styles/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": [
@@ -56,9 +56,5 @@
     "vite.config.ts",
     "vitest.config.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "storybook-static"
-  ]
+  "exclude": ["node_modules", "dist", "storybook-static"]
 }
