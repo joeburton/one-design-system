@@ -1,0 +1,2 @@
+# copy / add a skill
+`cp -r agent-skills/skills/react-best-practices .claude/skills`
