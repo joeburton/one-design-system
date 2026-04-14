@@ -12,17 +12,19 @@ const meta = {
 export default meta;
 
 const Box = ({ label }: { label: string }) => (
-  <div style={{
-    background: 'var(--ds-color-brand-primaryMuted)',
-    border: '1px solid var(--ds-color-brand-primaryBorder)',
-    borderRadius: 'var(--ds-borderRadius-md)',
-    padding: '8px 16px',
-    color: 'var(--ds-color-brand-primaryText)',
-    fontSize: 'var(--ds-typography-fontSize-sm)',
-    fontFamily: 'var(--ds-typography-fontFamily-body)',
-    fontWeight: 'var(--ds-typography-fontWeight-medium)',
-    whiteSpace: 'nowrap' as const,
-  }}>
+  <div
+    style={{
+      background: 'var(--ds-color-brand-primaryMuted)',
+      border: '1px solid var(--ds-color-brand-primaryBorder)',
+      borderRadius: 'var(--ds-borderRadius-md)',
+      padding: '8px 16px',
+      color: 'var(--ds-color-brand-primaryText)',
+      fontSize: 'var(--ds-typography-fontSize-sm)',
+      fontFamily: 'var(--ds-typography-fontFamily-body)',
+      fontWeight: 'var(--ds-typography-fontWeight-medium)',
+      whiteSpace: 'nowrap' as const,
+    }}
+  >
     {label}
   </div>
 );
@@ -66,7 +68,13 @@ export const AllGaps: StoryFn<typeof Stack> = () => (
   <Stack direction="column" gap="xl">
     {(['none', 'xs', 'sm', 'md', 'lg', 'xl'] as const).map((gap) => (
       <div key={gap}>
-        <Text style={{ marginBottom: 4, fontSize: 'var(--ds-typography-fontSize-xs)', color: 'var(--ds-color-text-subtle)' }}>
+        <Text
+          style={{
+            marginBottom: 4,
+            fontSize: 'var(--ds-typography-fontSize-xs)',
+            color: 'var(--ds-color-text-subtle)',
+          }}
+        >
           gap=&quot;{gap}&quot;
         </Text>
         <Stack direction="row" gap={gap} align="center">

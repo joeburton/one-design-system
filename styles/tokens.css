@@ -79,18 +79,19 @@
   --ds-borderRadius-lg: 8px;
   --ds-borderRadius-full: 9999px;
   --ds-shadow-none: none;
-  --ds-shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --ds-shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-  --ds-shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-  --ds-shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
-  --ds-shadow-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
+  --ds-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ds-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --ds-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --ds-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --ds-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
   --ds-duration-fast: 100ms;
   --ds-duration-normal: 200ms;
   --ds-duration-slow: 300ms;
 }
 
 /* ── Semantic Tokens: Light (default) ── */
-:root, [data-theme="light"] {
+:root,
+[data-theme='light'] {
   --ds-color-background-default: #ffffff;
   --ds-color-background-subtle: #f8f9fa;
   --ds-color-background-muted: #f1f3f5;
@@ -173,11 +174,11 @@
   --ds-borderRadius-badge: 9999px;
   --ds-borderRadius-tooltip: 4px;
   --ds-elevation-none: none;
-  --ds-elevation-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --ds-elevation-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-  --ds-elevation-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-  --ds-elevation-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
-  --ds-elevation-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
+  --ds-elevation-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ds-elevation-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --ds-elevation-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --ds-elevation-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --ds-elevation-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
   --ds-transition-fast: 100ms cubic-bezier(0, 0, 0.2, 1);
   --ds-transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --ds-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);

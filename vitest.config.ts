@@ -17,11 +17,7 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       include: ['components/**/*', 'hooks/**/*', 'utils/**/*'],
-      exclude: [
-        '**/*.stories.tsx',
-        '**/*.module.css',
-        '**/index.ts',
-      ],
+      exclude: ['**/*.stories.tsx', '**/*.module.css', '**/index.ts'],
       thresholds: {
         statements: 80,
         branches: 75,

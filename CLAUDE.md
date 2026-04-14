@@ -75,11 +75,11 @@ one-design-system/
 
 ### Three layers
 
-| Layer | File | Purpose |
-|-------|------|---------|
-| Primitive | `tokens/primitive.tokens.json` | Raw values. No semantic meaning. Never use directly in components. |
+| Layer          | File                                | Purpose                                                                    |
+| -------------- | ----------------------------------- | -------------------------------------------------------------------------- |
+| Primitive      | `tokens/primitive.tokens.json`      | Raw values. No semantic meaning. Never use directly in components.         |
 | Semantic light | `tokens/semantic.light.tokens.json` | Intent-mapped values. References primitives via `{color.blue.600}` syntax. |
-| Semantic dark | `tokens/semantic.dark.tokens.json` | Dark theme overrides only. Same keys, different values. |
+| Semantic dark  | `tokens/semantic.dark.tokens.json`  | Dark theme overrides only. Same keys, different values.                    |
 
 ### Naming convention
 
@@ -121,6 +121,7 @@ npm run tokens:build      # Regenerates styles/tokens.css, styles/themes/dark.cs
 ## Rules — read before writing any code
 
 ### 1. No hard-coded values in components or CSS
+
 Every colour, spacing value, radius, shadow, and transition **must** come from a CSS variable. No exceptions.
 
 ```css
@@ -140,6 +141,7 @@ Every colour, spacing value, radius, shadow, and transition **must** come from a
 ```
 
 ### 2. No component-level theme logic
+
 Themes are handled entirely by `[data-theme="dark"]` CSS overrides. Components must never check the current theme name.
 
 ```tsx
@@ -152,6 +154,7 @@ const bg = theme === 'dark' ? '#212529' : '#ffffff';
 ```
 
 ### 3. Use semantic tokens, not primitives
+
 Components consume semantic tokens. Primitive tokens exist only as a reference layer for the transform script.
 
 ```css
@@ -163,12 +166,15 @@ color: var(--ds-color-neutral-900);
 ```
 
 ### 4. TypeScript — strict mode, no `any`
+
 `tsconfig.json` has `"strict": true`. Do not add `any` types. Do not disable strict checks. `exactOptionalPropertyTypes` is intentionally omitted (breaks Vite/Rollup/Vitest interop).
 
 ### 5. CSS Modules only
+
 All component styles live in `ComponentName.module.css`. No inline styles except where CSS variables are dynamically constructed. No global CSS in component files.
 
 ### 6. `InputProps` uses `startAdornment` / `endAdornment`
+
 `prefix` is reserved by `HTMLInputElement`. Use `startAdornment` and `endAdornment` for icon slots.
 
 ---
@@ -178,6 +184,7 @@ All component styles live in `ComponentName.module.css`. No inline styles except
 Follow this exact pattern:
 
 **1. Create the component file**
+
 ```tsx
 // components/MyComponent/MyComponent.tsx
 import { type HTMLAttributes } from 'react';
@@ -188,7 +195,12 @@ export interface MyComponentProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'outlined';
 }
 
-export function MyComponent({ variant = 'default', className, children, ...rest }: MyComponentProps) {
+export function MyComponent({
+  variant = 'default',
+  className,
+  children,
+  ...rest
+}: MyComponentProps) {
   return (
     <div className={cx(styles.root, styles[`variant-${variant}`], className)} {...rest}>
       {children}
@@ -198,6 +210,7 @@ export function MyComponent({ variant = 'default', className, children, ...rest 
 ```
 
 **2. Create the CSS Module — only CSS variables**
+
 ```css
 /* components/MyComponent/MyComponent.module.css */
 .root {
@@ -221,7 +234,7 @@ const meta = {
   title: 'Components/MyComponent',
   component: MyComponent,
   tags: ['autodocs'],
-  args: { children: 'Content' },  // required if children is required
+  args: { children: 'Content' }, // required if children is required
 } satisfies Meta<typeof MyComponent>;
 
 export default meta;
@@ -237,6 +250,7 @@ export const CustomLayout: StoryFn<typeof MyComponent> = () => (
 ```
 
 **4. Export from the barrel**
+
 ```ts
 // components/index.ts — add:
 export { MyComponent } from './MyComponent/MyComponent';
@@ -258,6 +272,7 @@ export type { MyComponentProps } from './MyComponent/MyComponent';
 ## Theming
 
 The `ThemeProvider` in `hooks/useTheme.tsx`:
+
 - Reads `localStorage` on mount to persist preference
 - Falls back to `prefers-color-scheme` media query
 - Sets `data-theme="light"` or `data-theme="dark"` on `<html>`
@@ -269,7 +284,9 @@ import './styles/tokens.css';
 import './styles/themes/dark.css';
 import './styles/global.css';
 
-<ThemeProvider><App /></ThemeProvider>
+<ThemeProvider>
+  <App />
+</ThemeProvider>;
 
 // Consume anywhere
 import { useTheme } from './hooks/useTheme';
@@ -281,6 +298,7 @@ const { theme, toggleTheme } = useTheme();
 ## Utilities
 
 ### `token()` — type-safe CSS variable reference
+
 ```ts
 import { token } from '../utils/token.utils';
 
@@ -289,14 +307,16 @@ const color = token('color-brand-primary');
 ```
 
 ### `cx()` — conditional classNames
+
 ```ts
 import { cx } from '../utils/token.utils';
 
-cx('base', isActive && 'active', { disabled: isDisabled })
+cx('base', isActive && 'active', { disabled: isDisabled });
 // → 'base active' or 'base disabled' etc.
 ```
 
 ### `tokenStyle()` — inline style object from tokens
+
 ```ts
 import { tokenStyle } from '../utils/token.utils';
 
@@ -325,12 +345,12 @@ npm run build               # Vite production build
 
 ## Known constraints / decisions
 
-| Decision | Reason |
-|----------|--------|
-| `exactOptionalPropertyTypes` omitted from tsconfig | Causes deep type incompatibilities in Vite, Rollup, and Vitest's own `.d.ts` files |
-| `InputProps` uses `startAdornment`/`endAdornment` not `prefix`/`suffix` | `prefix` is reserved on `HTMLInputElement` |
-| `StoryFn` used for render-only stories | `StoryObj` requires `args` to satisfy required props like `children` |
-| `node:` prefix on Node imports in scripts | Required for ESM + `moduleResolution: bundler` |
-| `vite-env.d.ts` at root | Provides `*.module.css` type declarations without a separate `@types` package |
-| No `prepare` script | Prevents `npm install` from failing when tokens haven't been built yet |
-| React + react-dom in `devDependencies` | This is a component library; consumers provide their own React |
+| Decision                                                                | Reason                                                                             |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `exactOptionalPropertyTypes` omitted from tsconfig                      | Causes deep type incompatibilities in Vite, Rollup, and Vitest's own `.d.ts` files |
+| `InputProps` uses `startAdornment`/`endAdornment` not `prefix`/`suffix` | `prefix` is reserved on `HTMLInputElement`                                         |
+| `StoryFn` used for render-only stories                                  | `StoryObj` requires `args` to satisfy required props like `children`               |
+| `node:` prefix on Node imports in scripts                               | Required for ESM + `moduleResolution: bundler`                                     |
+| `vite-env.d.ts` at root                                                 | Provides `*.module.css` type declarations without a separate `@types` package      |
+| No `prepare` script                                                     | Prevents `npm install` from failing when tokens haven't been built yet             |
+| React + react-dom in `devDependencies`                                  | This is a component library; consumers provide their own React                     |

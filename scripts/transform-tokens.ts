@@ -42,7 +42,10 @@ function resolveRef(ref: string, flat: FlatMap): string {
   if (!match) return ref;
   const key = match[1].replace(/\./g, '-');
   const val = flat[key];
-  if (!val) { console.warn(`⚠️  Unresolved: ${ref}`); return ref; }
+  if (!val) {
+    console.warn(`⚠️  Unresolved: ${ref}`);
+    return ref;
+  }
   return /^\{.+\}$/.test(val) ? resolveRef(val, flat) : val;
 }
 
@@ -78,17 +81,25 @@ function buildCssVars(tree: RawTokenTree, flat: FlatMap, prefix = '--ds'): FlatM
 }
 
 function renderBlock(vars: FlatMap, selector: string): string {
-  const decls = Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n');
+  const decls = Object.entries(vars)
+    .map(([k, v]) => `  ${k}: ${v};`)
+    .join('\n');
   return `${selector} {\n${decls}\n}`;
 }
 
 function renderTypedVars(vars: FlatMap): string {
   const toConst = (name: string) =>
-    name.replace(/^--ds-/, '').replace(/-([a-z0-9])/g, (_, c: string) => c.toUpperCase())
+    name
+      .replace(/^--ds-/, '')
+      .replace(/-([a-z0-9])/g, (_, c: string) => c.toUpperCase())
       .replace(/^./, (c) => c.toUpperCase());
 
-  const consts = Object.keys(vars).map(name => `export const ${toConst(name)} = '${name}' as const;`).join('\n');
-  const map = Object.keys(vars).map(name => `  '${name}': \`var(${name})\``).join(',\n');
+  const consts = Object.keys(vars)
+    .map((name) => `export const ${toConst(name)} = '${name}' as const;`)
+    .join('\n');
+  const map = Object.keys(vars)
+    .map((name) => `  '${name}': \`var(${name})\``)
+    .join(',\n');
 
   return `/**\n * AUTO-GENERATED — do not edit.\n * Run: npm run tokens:build\n */\n\n${consts}\n\nexport const tokenVars = {\n${map}\n} as const;\n\nexport type TokenVarKey = keyof typeof tokenVars;\nexport type TokenVarValue = (typeof tokenVars)[TokenVarKey];\n`;
 }
@@ -100,16 +111,22 @@ function renderTypedVars(vars: FlatMap): string {
 async function transform(): Promise<void> {
   console.log('🔄 One Design System — Token Transform\n');
 
-  const primitiveTokens = (await import('../tokens/primitive.tokens.json', { assert: { type: 'json' } })).default as RawTokenTree;
-  const semanticLight   = (await import('../tokens/semantic.light.tokens.json', { assert: { type: 'json' } })).default as RawTokenTree;
-  const semanticDark    = (await import('../tokens/semantic.dark.tokens.json',  { assert: { type: 'json' } })).default as RawTokenTree;
+  const primitiveTokens = (
+    await import('../tokens/primitive.tokens.json', { assert: { type: 'json' } })
+  ).default as RawTokenTree;
+  const semanticLight = (
+    await import('../tokens/semantic.light.tokens.json', { assert: { type: 'json' } })
+  ).default as RawTokenTree;
+  const semanticDark = (
+    await import('../tokens/semantic.dark.tokens.json', { assert: { type: 'json' } })
+  ).default as RawTokenTree;
 
   const flat = flattenTokens(primitiveTokens);
   console.log(`✅ Flattened ${Object.keys(flat).length} primitive tokens`);
 
-  const primVars  = Object.fromEntries(Object.entries(flat).map(([k, v]) => [`--ds-${k}`, v]));
+  const primVars = Object.fromEntries(Object.entries(flat).map(([k, v]) => [`--ds-${k}`, v]));
   const lightVars = buildCssVars(semanticLight, flat);
-  const darkVars  = buildCssVars(semanticDark, flat);
+  const darkVars = buildCssVars(semanticDark, flat);
 
   console.log(`✅ Resolved ${Object.keys(lightVars).length} light semantic tokens`);
   console.log(`✅ Resolved ${Object.keys(darkVars).length} dark semantic overrides`);
@@ -141,9 +158,16 @@ async function transform(): Promise<void> {
   console.log('✅ Written: styles/themes/dark.css');
 
   mkdirSync(resolve(root, 'tokens/types'), { recursive: true });
-  writeFileSync(resolve(root, 'tokens/types/token-vars.generated.ts'), renderTypedVars(lightVars), 'utf-8');
+  writeFileSync(
+    resolve(root, 'tokens/types/token-vars.generated.ts'),
+    renderTypedVars(lightVars),
+    'utf-8'
+  );
   console.log('✅ Written: tokens/types/token-vars.generated.ts');
   console.log('\n✨ Transform complete!\n');
 }
 
-transform().catch((err: unknown) => { console.error('❌ Failed:', err); process.exit(1); });
+transform().catch((err: unknown) => {
+  console.error('❌ Failed:', err);
+  process.exit(1);
+});

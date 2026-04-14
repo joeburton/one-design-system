@@ -38,12 +38,7 @@ describe('Input', () => {
     });
 
     it('renders error message and suppresses hint', () => {
-      render(
-        <Input
-          hint="Normal hint"
-          errorMessage="This field is required"
-        />
-      );
+      render(<Input hint="Normal hint" errorMessage="This field is required" />);
       expect(screen.getByText('This field is required')).toBeInTheDocument();
       expect(screen.queryByText('Normal hint')).not.toBeInTheDocument();
     });

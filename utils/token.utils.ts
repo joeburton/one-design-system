@@ -6,9 +6,7 @@ export function token<T extends SemanticToken>(name: T): CssVar {
 }
 
 /** Build a style object from a map of CSS prop → semantic token */
-export function tokenStyle(
-  map: Partial<Record<string, SemanticToken>>
-): Record<string, string> {
+export function tokenStyle(map: Partial<Record<string, SemanticToken>>): Record<string, string> {
   const style: Record<string, string> = {};
   for (const [prop, t] of Object.entries(map)) {
     if (t) style[prop] = token(t);
@@ -23,8 +21,13 @@ export function cx(
   const out: string[] = [];
   for (const arg of args) {
     if (!arg) continue;
-    if (typeof arg === 'string') { out.push(arg); continue; }
-    for (const [cls, on] of Object.entries(arg)) { if (on) out.push(cls); }
+    if (typeof arg === 'string') {
+      out.push(arg);
+      continue;
+    }
+    for (const [cls, on] of Object.entries(arg)) {
+      if (on) out.push(cls);
+    }
   }
   return out.join(' ');
 }

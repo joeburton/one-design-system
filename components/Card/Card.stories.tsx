@@ -10,9 +10,9 @@ const meta = {
   tags: ['autodocs'],
   parameters: { layout: 'centered' },
   argTypes: {
-    elevation:   { control: 'select', options: ['none', 'xs', 'sm', 'md', 'lg'] },
-    padding:     { control: 'select', options: ['none', 'sm', 'md', 'lg', 'xl'] },
-    bordered:    { control: 'boolean' },
+    elevation: { control: 'select', options: ['none', 'xs', 'sm', 'md', 'lg'] },
+    padding: { control: 'select', options: ['none', 'sm', 'md', 'lg', 'xl'] },
+    bordered: { control: 'boolean' },
     interactive: { control: 'boolean' },
   },
   args: {
@@ -37,7 +37,9 @@ export const Default: Story = {
 
 export const WithSubComponents: StoryFn<typeof Card> = () => (
   <Card style={{ width: 360 }}>
-    <Card.Header><H3>Card Title</H3></Card.Header>
+    <Card.Header>
+      <H3>Card Title</H3>
+    </Card.Header>
     <Card.Body>
       <Stack direction="column" gap="sm">
         <Text>This card uses Header, Body, and Footer sub-components.</Text>
@@ -46,7 +48,9 @@ export const WithSubComponents: StoryFn<typeof Card> = () => (
     </Card.Body>
     <Card.Footer>
       <Stack direction="row" gap="sm" justify="end">
-        <Button variant="ghost" size="sm">Cancel</Button>
+        <Button variant="ghost" size="sm">
+          Cancel
+        </Button>
         <Button size="sm">Confirm</Button>
       </Stack>
     </Card.Footer>
@@ -59,7 +63,9 @@ export const Interactive: StoryFn<typeof Card> = () => (
     {(['none', 'xs', 'sm', 'md', 'lg'] as const).map((elevation) => (
       <Card key={elevation} elevation={elevation} interactive padding="md" style={{ width: 160 }}>
         <Stack direction="column" gap="xs">
-          <Text color="subtle" style={{ fontSize: '0.75rem' }}>elevation</Text>
+          <Text color="subtle" style={{ fontSize: '0.75rem' }}>
+            elevation
+          </Text>
           <Text>{elevation}</Text>
         </Stack>
       </Card>

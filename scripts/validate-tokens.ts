@@ -13,9 +13,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
 const TokenTypeSchema = z.enum([
-  'color', 'dimension', 'fontFamily', 'fontWeight', 'duration',
-  'cubicBezier', 'number', 'shadow', 'gradient', 'typography',
-  'border', 'transition', 'strokeStyle',
+  'color',
+  'dimension',
+  'fontFamily',
+  'fontWeight',
+  'duration',
+  'cubicBezier',
+  'number',
+  'shadow',
+  'gradient',
+  'typography',
+  'border',
+  'transition',
+  'strokeStyle',
 ]);
 
 const DesignTokenSchema = z.object({
@@ -29,10 +39,12 @@ const TokenGroupSchema: z.ZodType<Record<string, unknown>> = z.lazy(() =>
   z.record(z.union([DesignTokenSchema, TokenGroupSchema, z.string()]))
 );
 
-const TokenFileSchema = z.object({
-  $schema: z.string().optional(),
-  $description: z.string().optional(),
-}).catchall(z.union([DesignTokenSchema, TokenGroupSchema]));
+const TokenFileSchema = z
+  .object({
+    $schema: z.string().optional(),
+    $description: z.string().optional(),
+  })
+  .catchall(z.union([DesignTokenSchema, TokenGroupSchema]));
 
 function countTokens(obj: Record<string, unknown>, n = 0): number {
   for (const v of Object.values(obj)) {
@@ -72,7 +84,7 @@ async function validate(): Promise<void> {
     } else {
       allValid = false;
       console.log(`❌ ${file}`);
-      result.error.errors.forEach(e => console.log(`   • ${e.path.join('.')}: ${e.message}`));
+      result.error.errors.forEach((e) => console.log(`   • ${e.path.join('.')}: ${e.message}`));
     }
   }
 
@@ -84,4 +96,7 @@ async function validate(): Promise<void> {
   }
 }
 
-validate().catch((err: unknown) => { console.error('Fatal:', err); process.exit(1); });
+validate().catch((err: unknown) => {
+  console.error('Fatal:', err);
+  process.exit(1);
+});

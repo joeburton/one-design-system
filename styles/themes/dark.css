@@ -1,7 +1,7 @@
 /* ONE DESIGN SYSTEM — Dark Theme Overrides */
 /* DO NOT EDIT — run: npm run tokens:build */
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --ds-color-background-default: #0d0f12;
   --ds-color-background-subtle: #212529;
   --ds-color-background-muted: #343a40;
