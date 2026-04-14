@@ -1,0 +1,50 @@
+/* ONE DESIGN SYSTEM — Dark Theme Overrides */
+/* DO NOT EDIT — run: npm run tokens:build */
+
+[data-theme="dark"] {
+  --ds-color-background-default: #0d0f12;
+  --ds-color-background-subtle: #212529;
+  --ds-color-background-muted: #343a40;
+  --ds-color-background-emphasis: #ffffff;
+  --ds-color-surface-default: #212529;
+  --ds-color-surface-raised: #343a40;
+  --ds-color-surface-overlay: #212529;
+  --ds-color-surface-sunken: #0d0f12;
+  --ds-color-border-default: #343a40;
+  --ds-color-border-subtle: #212529;
+  --ds-color-border-strong: #6c757d;
+  --ds-color-border-focus: #4dabf7;
+  --ds-color-text-default: #f8f9fa;
+  --ds-color-text-subtle: #ced4da;
+  --ds-color-text-muted: #6c757d;
+  --ds-color-text-onEmphasis: #212529;
+  --ds-color-text-link: #4dabf7;
+  --ds-color-text-linkHover: #74c0fc;
+  --ds-color-text-disabled: #6c757d;
+  --ds-color-brand-primary: #4dabf7;
+  --ds-color-brand-primaryHover: #74c0fc;
+  --ds-color-brand-primaryActive: #a5d8ff;
+  --ds-color-brand-primaryMuted: #0f2030;
+  --ds-color-brand-primaryBorder: #1971c2;
+  --ds-color-brand-primaryText: #74c0fc;
+  --ds-color-status-success: #69db7c;
+  --ds-color-status-successHover: #b2f2bb;
+  --ds-color-status-successMuted: #0d1f10;
+  --ds-color-status-successBorder: #2f9e44;
+  --ds-color-status-successText: #69db7c;
+  --ds-color-status-warning: #ffd43b;
+  --ds-color-status-warningHover: #ffec99;
+  --ds-color-status-warningMuted: #1f1a0a;
+  --ds-color-status-warningBorder: #f08c00;
+  --ds-color-status-warningText: #ffd43b;
+  --ds-color-status-error: #ff8787;
+  --ds-color-status-errorHover: #ffc9c9;
+  --ds-color-status-errorMuted: #200f0f;
+  --ds-color-status-errorBorder: #e03131;
+  --ds-color-status-errorText: #ff8787;
+  --ds-color-status-info: #4dabf7;
+  --ds-color-status-infoHover: #74c0fc;
+  --ds-color-status-infoMuted: #0f1f2e;
+  --ds-color-status-infoBorder: #1971c2;
+  --ds-color-status-infoText: #74c0fc;
+}

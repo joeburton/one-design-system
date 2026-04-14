@@ -1,0 +1,63 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Semantic token overrides for the dark theme.",
+  "color": {
+    "background": {
+      "default":  { "$value": "{color.neutral.950}", "$type": "color" },
+      "subtle":   { "$value": "{color.neutral.900}", "$type": "color" },
+      "muted":    { "$value": "{color.neutral.800}", "$type": "color" },
+      "emphasis": { "$value": "{color.neutral.0}",   "$type": "color" }
+    },
+    "surface": {
+      "default": { "$value": "{color.neutral.900}", "$type": "color" },
+      "raised":  { "$value": "{color.neutral.800}", "$type": "color" },
+      "overlay": { "$value": "{color.neutral.900}", "$type": "color" },
+      "sunken":  { "$value": "{color.neutral.950}", "$type": "color" }
+    },
+    "border": {
+      "default": { "$value": "{color.neutral.800}", "$type": "color" },
+      "subtle":  { "$value": "{color.neutral.900}", "$type": "color" },
+      "strong":  { "$value": "{color.neutral.600}", "$type": "color" },
+      "focus":   { "$value": "{color.blue.400}",    "$type": "color" }
+    },
+    "text": {
+      "default":    { "$value": "{color.neutral.50}",  "$type": "color" },
+      "subtle":     { "$value": "{color.neutral.400}", "$type": "color" },
+      "muted":      { "$value": "{color.neutral.600}", "$type": "color" },
+      "onEmphasis": { "$value": "{color.neutral.900}", "$type": "color" },
+      "link":       { "$value": "{color.blue.400}",    "$type": "color" },
+      "linkHover":  { "$value": "{color.blue.300}",    "$type": "color" },
+      "disabled":   { "$value": "{color.neutral.600}", "$type": "color" }
+    },
+    "brand": {
+      "primary":       { "$value": "{color.blue.400}",  "$type": "color" },
+      "primaryHover":  { "$value": "{color.blue.300}",  "$type": "color" },
+      "primaryActive": { "$value": "{color.blue.200}",  "$type": "color" },
+      "primaryMuted":  { "$value": "#0f2030",            "$type": "color" },
+      "primaryBorder": { "$value": "{color.blue.800}",  "$type": "color" },
+      "primaryText":   { "$value": "{color.blue.300}",  "$type": "color" }
+    },
+    "status": {
+      "success":       { "$value": "{color.green.400}", "$type": "color" },
+      "successHover":  { "$value": "{color.green.200}", "$type": "color" },
+      "successMuted":  { "$value": "#0d1f10",            "$type": "color" },
+      "successBorder": { "$value": "{color.green.800}", "$type": "color" },
+      "successText":   { "$value": "{color.green.400}", "$type": "color" },
+      "warning":       { "$value": "{color.yellow.400}","$type": "color" },
+      "warningHover":  { "$value": "{color.yellow.200}","$type": "color" },
+      "warningMuted":  { "$value": "#1f1a0a",            "$type": "color" },
+      "warningBorder": { "$value": "{color.yellow.800}","$type": "color" },
+      "warningText":   { "$value": "{color.yellow.400}","$type": "color" },
+      "error":         { "$value": "{color.red.400}",   "$type": "color" },
+      "errorHover":    { "$value": "{color.red.200}",   "$type": "color" },
+      "errorMuted":    { "$value": "#200f0f",            "$type": "color" },
+      "errorBorder":   { "$value": "{color.red.800}",   "$type": "color" },
+      "errorText":     { "$value": "{color.red.400}",   "$type": "color" },
+      "info":          { "$value": "{color.blue.400}",  "$type": "color" },
+      "infoHover":     { "$value": "{color.blue.300}",  "$type": "color" },
+      "infoMuted":     { "$value": "#0f1f2e",            "$type": "color" },
+      "infoBorder":    { "$value": "{color.blue.800}",  "$type": "color" },
+      "infoText":      { "$value": "{color.blue.300}",  "$type": "color" }
+    }
+  }
+}

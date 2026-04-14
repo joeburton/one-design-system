@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    /* Language & Environment */
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
+
+    /* Module */
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    /* Emit */
+    "noEmit": true,
+    "sourceMap": true,
+
+    /* Strict
+       NOTE: exactOptionalPropertyTypes intentionally omitted —
+       it causes deep incompatibility errors in Vite/Rollup/Vitest type declarations. */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Node types — required by Vite, Vitest, and scripts using fs/path/url */
+    "types": ["node", "vite/client"],
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@/*":            ["./*"],
+      "@components/*": ["./components/*"],
+      "@tokens/*":     ["./tokens/*"],
+      "@styles/*":     ["./styles/*"],
+      "@hooks/*":      ["./hooks/*"],
+      "@utils/*":      ["./utils/*"]
+    }
+  },
+  "include": [
+    "vite-env.d.ts",
+    "components/**/*",
+    "hooks/**/*",
+    "utils/**/*",
+    "tokens/**/*",
+    "scripts/**/*",
+    "tests/**/*",
+    ".storybook/**/*",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "storybook-static"
+  ]
+}

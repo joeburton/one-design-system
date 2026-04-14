@@ -1,0 +1,116 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Primitive tokens — raw values, no semantic meaning.",
+  "color": {
+    "neutral": {
+      "0":    { "$value": "#ffffff", "$type": "color" },
+      "50":   { "$value": "#f8f9fa", "$type": "color" },
+      "100":  { "$value": "#f1f3f5", "$type": "color" },
+      "200":  { "$value": "#e9ecef", "$type": "color" },
+      "300":  { "$value": "#dee2e6", "$type": "color" },
+      "400":  { "$value": "#ced4da", "$type": "color" },
+      "500":  { "$value": "#adb5bd", "$type": "color" },
+      "600":  { "$value": "#6c757d", "$type": "color" },
+      "700":  { "$value": "#495057", "$type": "color" },
+      "800":  { "$value": "#343a40", "$type": "color" },
+      "900":  { "$value": "#212529", "$type": "color" },
+      "950":  { "$value": "#0d0f12", "$type": "color" },
+      "1000": { "$value": "#000000", "$type": "color" }
+    },
+    "blue": {
+      "50":  { "$value": "#e7f5ff", "$type": "color" },
+      "100": { "$value": "#d0ebff", "$type": "color" },
+      "200": { "$value": "#a5d8ff", "$type": "color" },
+      "300": { "$value": "#74c0fc", "$type": "color" },
+      "400": { "$value": "#4dabf7", "$type": "color" },
+      "500": { "$value": "#339af0", "$type": "color" },
+      "600": { "$value": "#228be6", "$type": "color" },
+      "700": { "$value": "#1c7ed6", "$type": "color" },
+      "800": { "$value": "#1971c2", "$type": "color" },
+      "900": { "$value": "#1864ab", "$type": "color" }
+    },
+    "green": {
+      "50":  { "$value": "#ebfbee", "$type": "color" },
+      "200": { "$value": "#b2f2bb", "$type": "color" },
+      "400": { "$value": "#69db7c", "$type": "color" },
+      "600": { "$value": "#40c057", "$type": "color" },
+      "700": { "$value": "#37b24d", "$type": "color" },
+      "800": { "$value": "#2f9e44", "$type": "color" }
+    },
+    "red": {
+      "50":  { "$value": "#fff5f5", "$type": "color" },
+      "200": { "$value": "#ffc9c9", "$type": "color" },
+      "400": { "$value": "#ff8787", "$type": "color" },
+      "600": { "$value": "#fa5252", "$type": "color" },
+      "700": { "$value": "#f03e3e", "$type": "color" },
+      "800": { "$value": "#e03131", "$type": "color" }
+    },
+    "yellow": {
+      "50":  { "$value": "#fff9db", "$type": "color" },
+      "200": { "$value": "#ffec99", "$type": "color" },
+      "400": { "$value": "#ffd43b", "$type": "color" },
+      "500": { "$value": "#fcc419", "$type": "color" },
+      "800": { "$value": "#f08c00", "$type": "color" },
+      "900": { "$value": "#e67700", "$type": "color" }
+    }
+  },
+  "fontFamily": {
+    "sans":  { "$value": "'Inter Variable', 'Inter', system-ui, sans-serif", "$type": "fontFamily" },
+    "mono":  { "$value": "'JetBrains Mono', 'Fira Code', monospace", "$type": "fontFamily" },
+    "serif": { "$value": "'Georgia', 'Times New Roman', serif", "$type": "fontFamily" }
+  },
+  "fontSize": {
+    "12": { "$value": "0.75rem",  "$type": "dimension" },
+    "14": { "$value": "0.875rem", "$type": "dimension" },
+    "16": { "$value": "1rem",     "$type": "dimension" },
+    "18": { "$value": "1.125rem", "$type": "dimension" },
+    "20": { "$value": "1.25rem",  "$type": "dimension" },
+    "24": { "$value": "1.5rem",   "$type": "dimension" },
+    "28": { "$value": "1.75rem",  "$type": "dimension" },
+    "32": { "$value": "2rem",     "$type": "dimension" },
+    "40": { "$value": "2.5rem",   "$type": "dimension" },
+    "48": { "$value": "3rem",     "$type": "dimension" }
+  },
+  "fontWeight": {
+    "regular":  { "$value": 400, "$type": "fontWeight" },
+    "medium":   { "$value": 500, "$type": "fontWeight" },
+    "semibold": { "$value": 600, "$type": "fontWeight" },
+    "bold":     { "$value": 700, "$type": "fontWeight" }
+  },
+  "lineHeight": {
+    "tight":   { "$value": 1.25,  "$type": "number" },
+    "normal":  { "$value": 1.5,   "$type": "number" },
+    "relaxed": { "$value": 1.625, "$type": "number" }
+  },
+  "spacing": {
+    "1":  { "$value": "4px",   "$type": "dimension" },
+    "2":  { "$value": "8px",   "$type": "dimension" },
+    "4":  { "$value": "16px",  "$type": "dimension" },
+    "6":  { "$value": "24px",  "$type": "dimension" },
+    "8":  { "$value": "32px",  "$type": "dimension" },
+    "12": { "$value": "48px",  "$type": "dimension" },
+    "16": { "$value": "64px",  "$type": "dimension" },
+    "24": { "$value": "96px",  "$type": "dimension" },
+    "32": { "$value": "128px", "$type": "dimension" }
+  },
+  "borderRadius": {
+    "none": { "$value": "0px",    "$type": "dimension" },
+    "sm":   { "$value": "4px",    "$type": "dimension" },
+    "md":   { "$value": "6px",    "$type": "dimension" },
+    "lg":   { "$value": "8px",    "$type": "dimension" },
+    "full": { "$value": "9999px", "$type": "dimension" }
+  },
+  "shadow": {
+    "none": { "$value": "none", "$type": "shadow" },
+    "xs":   { "$value": "0 1px 2px rgba(0,0,0,0.05)", "$type": "shadow" },
+    "sm":   { "$value": "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)", "$type": "shadow" },
+    "md":   { "$value": "0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06)", "$type": "shadow" },
+    "lg":   { "$value": "0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)", "$type": "shadow" },
+    "xl":   { "$value": "0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04)", "$type": "shadow" }
+  },
+  "duration": {
+    "fast":   { "$value": "100ms", "$type": "duration" },
+    "normal": { "$value": "200ms", "$type": "duration" },
+    "slow":   { "$value": "300ms", "$type": "duration" }
+  }
+}

@@ -1,0 +1,122 @@
+/* ============================================================
+   Select.module.css
+   ============================================================ */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-component-xs);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullWidth .wrapper {
+  width: 100%;
+}
+
+.label {
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-sm);
+  font-weight: var(--ds-typography-fontWeight-medium);
+  color: var(--ds-color-text-default);
+}
+
+.required {
+  color: var(--ds-color-status-error);
+}
+
+/* ── Wrapper ──────────────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--ds-color-surface-default);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-borderRadius-input);
+  transition:
+    border-color var(--ds-transition-fast),
+    box-shadow var(--ds-transition-fast);
+}
+
+.wrapper:focus-within {
+  border-color: var(--ds-color-border-focus);
+  box-shadow:
+    0 0 0 2px var(--ds-color-background-default),
+    0 0 0 4px var(--ds-color-border-focus);
+}
+
+/* ── Sizes ────────────────────────────────────────────────── */
+
+.size-sm { min-height: 32px; }
+.size-md { min-height: 40px; }
+.size-lg { min-height: 48px; }
+
+.size-sm .select { font-size: var(--ds-typography-fontSize-sm); padding: 0 2.5rem 0 var(--ds-spacing-component-sm); }
+.size-md .select { font-size: var(--ds-typography-fontSize-sm); padding: 0 2.5rem 0 var(--ds-spacing-component-md); }
+.size-lg .select { font-size: var(--ds-typography-fontSize-md); padding: 0 2.5rem 0 var(--ds-spacing-component-md); }
+
+/* ── Status ───────────────────────────────────────────────── */
+
+.status-error { border-color: var(--ds-color-status-errorBorder); }
+.status-error:focus-within {
+  border-color: var(--ds-color-status-error);
+  box-shadow: 0 0 0 2px var(--ds-color-background-default), 0 0 0 4px var(--ds-color-status-errorBorder);
+}
+.status-success { border-color: var(--ds-color-status-successBorder); }
+.status-warning { border-color: var(--ds-color-status-warningBorder); }
+
+/* ── Disabled ─────────────────────────────────────────────── */
+
+.disabled {
+  opacity: 0.5;
+  background-color: var(--ds-color-background-muted);
+  cursor: not-allowed;
+}
+
+/* ── Native select ────────────────────────────────────────── */
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--ds-typography-fontFamily-body);
+  color: var(--ds-color-text-default);
+  cursor: pointer;
+  line-height: var(--ds-typography-lineHeight-normal);
+}
+
+.select:disabled {
+  cursor: not-allowed;
+  color: var(--ds-color-text-disabled);
+}
+
+/* ── Chevron ──────────────────────────────────────────────── */
+
+.chevron {
+  position: absolute;
+  right: var(--ds-spacing-component-sm);
+  display: inline-flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--ds-color-text-subtle);
+}
+
+/* ── Hint ─────────────────────────────────────────────────── */
+
+.hint {
+  margin: 0;
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-xs);
+  color: var(--ds-color-text-subtle);
+}
+
+.hintError {
+  color: var(--ds-color-status-errorText);
+}

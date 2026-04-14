@@ -1,0 +1,30 @@
+/* ============================================================
+   Icon.module.css
+   ============================================================ */
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+/* ── Sizes ────────────────────────────────────────────────── */
+
+.size-xs { width: 12px; height: 12px; }
+.size-sm { width: 16px; height: 16px; }
+.size-md { width: 20px; height: 20px; }
+.size-lg { width: 24px; height: 24px; }
+.size-xl { width: 32px; height: 32px; }
+
+/* ── Colours ──────────────────────────────────────────────── */
+
+.color-inherit  { color: inherit; }
+.color-default  { color: var(--ds-color-text-default); }
+.color-subtle   { color: var(--ds-color-text-subtle); }
+.color-muted    { color: var(--ds-color-text-muted); }
+.color-primary  { color: var(--ds-color-brand-primary); }
+.color-success  { color: var(--ds-color-status-success); }
+.color-warning  { color: var(--ds-color-status-warning); }
+.color-error    { color: var(--ds-color-status-error); }
+.color-info     { color: var(--ds-color-status-info); }

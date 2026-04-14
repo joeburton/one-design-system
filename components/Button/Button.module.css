@@ -1,0 +1,63 @@
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--ds-spacing-component-sm); white-space: nowrap; cursor: pointer;
+  user-select: none; text-decoration: none; vertical-align: middle;
+  font-family: var(--ds-typography-fontFamily-body);
+  font-weight: var(--ds-typography-fontWeight-medium);
+  line-height: var(--ds-typography-lineHeight-tight);
+  border-radius: var(--ds-borderRadius-button);
+  border: 1px solid transparent; outline: none;
+  transition:
+    background-color var(--ds-transition-fast),
+    border-color var(--ds-transition-fast),
+    color var(--ds-transition-fast),
+    box-shadow var(--ds-transition-fast),
+    transform var(--ds-transition-fast);
+}
+.button:focus-visible {
+  box-shadow: 0 0 0 2px var(--ds-color-background-default), 0 0 0 4px var(--ds-color-border-focus);
+}
+.button:active:not(:disabled) { transform: translateY(1px); }
+
+/* Variants */
+.variant-primary { background: var(--ds-color-brand-primary); border-color: var(--ds-color-brand-primary); color: #fff; }
+.variant-primary:hover:not(:disabled) { background: var(--ds-color-brand-primaryHover); border-color: var(--ds-color-brand-primaryHover); }
+.variant-primary:active:not(:disabled) { background: var(--ds-color-brand-primaryActive); border-color: var(--ds-color-brand-primaryActive); }
+
+.variant-secondary { background: var(--ds-color-surface-default); border-color: var(--ds-color-border-default); color: var(--ds-color-text-default); }
+.variant-secondary:hover:not(:disabled) { background: var(--ds-color-background-subtle); border-color: var(--ds-color-border-strong); }
+.variant-secondary:active:not(:disabled) { background: var(--ds-color-background-muted); }
+
+.variant-ghost { background: transparent; border-color: transparent; color: var(--ds-color-text-default); }
+.variant-ghost:hover:not(:disabled) { background: var(--ds-color-background-subtle); }
+.variant-ghost:active:not(:disabled) { background: var(--ds-color-background-muted); }
+
+.variant-danger { background: var(--ds-color-status-error); border-color: var(--ds-color-status-error); color: #fff; }
+.variant-danger:hover:not(:disabled) { background: var(--ds-color-status-errorHover); border-color: var(--ds-color-status-errorHover); }
+
+.variant-success { background: var(--ds-color-status-success); border-color: var(--ds-color-status-success); color: #fff; }
+.variant-success:hover:not(:disabled) { background: var(--ds-color-status-successHover); border-color: var(--ds-color-status-successHover); }
+
+/* Sizes */
+.size-xs { padding: 2px var(--ds-spacing-component-sm); font-size: var(--ds-typography-fontSize-xs); min-height: 24px; }
+.size-sm { padding: var(--ds-spacing-component-xs) var(--ds-spacing-component-sm); font-size: var(--ds-typography-fontSize-sm); min-height: 32px; }
+.size-md { padding: var(--ds-spacing-component-sm) var(--ds-spacing-component-md); font-size: var(--ds-typography-fontSize-sm); min-height: 40px; }
+.size-lg { padding: var(--ds-spacing-component-sm) var(--ds-spacing-component-lg); font-size: var(--ds-typography-fontSize-md); min-height: 48px; }
+.size-xl { padding: var(--ds-spacing-component-md) var(--ds-spacing-component-xl); font-size: var(--ds-typography-fontSize-lg); min-height: 56px; }
+
+/* States */
+.button:disabled, .button[aria-disabled='true'] { cursor: not-allowed; opacity: 0.45; pointer-events: none; }
+.fullWidth { width: 100%; }
+
+/* Icon only */
+.iconOnly { padding-left: 0; padding-right: 0; aspect-ratio: 1; }
+.iconOnly .label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+
+.label { display: inline-flex; align-items: center; }
+.iconLeft, .iconRight { display: inline-flex; align-items: center; flex-shrink: 0; width: 1.25em; height: 1.25em; }
+
+/* Spinner */
+.loading { pointer-events: none; }
+.spinner { display: inline-flex; align-items: center; flex-shrink: 0; width: 1.1em; height: 1.1em; animation: spin 0.75s linear infinite; }
+.spinner svg { width: 100%; height: 100%; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
