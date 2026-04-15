@@ -62,3 +62,7 @@ export type { StackProps, StackDirection, StackAlign, StackJustify, StackGap } f
 // Icon
 export { Icon, NamedIcon, icons } from './Icon/Icon';
 export type { IconProps, IconSize, IconColor, IconName } from './Icon/Icon';
+
+// Accordion
+export { Accordion } from './Accordion/Accordion';
+export type { AccordionProps } from './Accordion/Accordion';

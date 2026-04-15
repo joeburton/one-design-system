@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from './Input';
 import { NamedIcon } from '../Icon/Icon';
 
@@ -26,7 +26,7 @@ export const Default: Story = {
 };
 
 export const WithError: Story = {
-  storyName: 'Error State',
+  name: 'Error State',
   args: {
     label: 'Password',
     type: 'password',
@@ -36,7 +36,7 @@ export const WithError: Story = {
 };
 
 export const WithSuccess: Story = {
-  storyName: 'Success State',
+  name: 'Success State',
   args: {
     label: 'Username',
     status: 'success',
@@ -46,7 +46,7 @@ export const WithSuccess: Story = {
 };
 
 export const WithStartAdornment: Story = {
-  storyName: 'With Start Adornment',
+  name: 'With Start Adornment',
   args: {
     label: 'Search',
     startAdornment: <NamedIcon name="search" size="sm" color="muted" />,
@@ -54,14 +54,16 @@ export const WithStartAdornment: Story = {
   },
 };
 
-export const AllSizes: StoryFn<typeof Input> = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: 300 }}>
-    <Input size="sm" label="Small" placeholder="Small input" />
-    <Input size="md" label="Medium" placeholder="Medium input" />
-    <Input size="lg" label="Large" placeholder="Large input" />
-  </div>
-);
-AllSizes.storyName = 'All Sizes';
+export const AllSizes: Story = {
+  name: 'All Sizes',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: 300 }}>
+      <Input size="sm" label="Small" placeholder="Small input" />
+      <Input size="md" label="Medium" placeholder="Medium input" />
+      <Input size="lg" label="Large" placeholder="Large input" />
+    </div>
+  ),
+};
 
 export const Disabled: Story = {
   args: {

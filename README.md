@@ -223,10 +223,21 @@ The `ThemeProvider`:
 
 ## Adding a New Component
 
-1. Create `components/MyComponent/MyComponent.tsx`
-2. Create `components/MyComponent/MyComponent.module.css` — use only CSS variables
-3. Create `components/MyComponent/MyComponent.stories.tsx`
-4. Export from `components/index.ts`
+Use the generator script to scaffold all required files automatically:
+
+```bash
+npm run generate:component -- MyComponent
+```
+
+This creates the following files in one step:
+
+- `components/MyComponent/MyComponent.tsx` — component with `variant` prop and `cx()` classnames
+- `components/MyComponent/MyComponent.module.css` — CSS Module using only design tokens
+- `components/MyComponent/MyComponent.stories.tsx` — Storybook stories with `Default` and `Outlined` variants
+
+It also appends the barrel export to `components/index.ts` automatically.
+
+The component name must be PascalCase (e.g. `MyComponent`, not `my-component`). Edit the generated files to implement your component's full API.
 
 ---
 
@@ -261,6 +272,7 @@ CSS variable prefix: `--ds-` (design system)
 | `npm run build-storybook` | Build Storybook static site  |
 | `npm run test`            | Run all tests                |
 | `npm run test:coverage`   | Tests with coverage report   |
-| `npm run typecheck`       | TypeScript type checking     |
-| `npm run lint`            | ESLint                       |
-| `npm run format`          | Prettier                     |
+| `npm run typecheck`            | TypeScript type checking               |
+| `npm run generate:component`   | Scaffold a new component with all files|
+| `npm run lint`                 | ESLint                                 |
+| `npm run format`               | Prettier                               |

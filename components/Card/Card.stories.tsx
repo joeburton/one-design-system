@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './Card';
 import { H3, Text } from '../Typography/Typography';
 import { Button } from '../Button/Button';
@@ -35,52 +35,58 @@ export const Default: Story = {
   ),
 };
 
-export const WithSubComponents: StoryFn<typeof Card> = () => (
-  <Card style={{ width: 360 }}>
-    <Card.Header>
-      <H3>Card Title</H3>
-    </Card.Header>
-    <Card.Body>
-      <Stack direction="column" gap="sm">
-        <Text>This card uses Header, Body, and Footer sub-components.</Text>
-        <Text color="subtle">Each section has its own padding and separator.</Text>
-      </Stack>
-    </Card.Body>
-    <Card.Footer>
-      <Stack direction="row" gap="sm" justify="end">
-        <Button variant="ghost" size="sm">
-          Cancel
-        </Button>
-        <Button size="sm">Confirm</Button>
-      </Stack>
-    </Card.Footer>
-  </Card>
-);
-WithSubComponents.storyName = 'With Header, Body & Footer';
-
-export const Interactive: StoryFn<typeof Card> = () => (
-  <Stack direction="row" gap="md">
-    {(['none', 'xs', 'sm', 'md', 'lg'] as const).map((elevation) => (
-      <Card key={elevation} elevation={elevation} interactive padding="md" style={{ width: 160 }}>
-        <Stack direction="column" gap="xs">
-          <Text color="subtle" style={{ fontSize: '0.75rem' }}>
-            elevation
-          </Text>
-          <Text>{elevation}</Text>
+export const WithSubComponents: Story = {
+  name: 'With Header, Body & Footer',
+  render: () => (
+    <Card style={{ width: 360 }}>
+      <Card.Header>
+        <H3>Card Title</H3>
+      </Card.Header>
+      <Card.Body>
+        <Stack direction="column" gap="sm">
+          <Text>This card uses Header, Body, and Footer sub-components.</Text>
+          <Text color="subtle">Each section has its own padding and separator.</Text>
         </Stack>
-      </Card>
-    ))}
-  </Stack>
-);
-Interactive.storyName = 'Interactive (Hoverable)';
+      </Card.Body>
+      <Card.Footer>
+        <Stack direction="row" gap="sm" justify="end">
+          <Button variant="ghost" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </Stack>
+      </Card.Footer>
+    </Card>
+  ),
+};
 
-export const Elevations: StoryFn<typeof Card> = () => (
-  <Stack direction="row" gap="lg" align="center">
-    {(['none', 'xs', 'sm', 'md', 'lg'] as const).map((elevation) => (
-      <Card key={elevation} elevation={elevation} padding="md" bordered style={{ width: 140 }}>
-        <Text style={{ textAlign: 'center' }}>{elevation}</Text>
-      </Card>
-    ))}
-  </Stack>
-);
-Elevations.storyName = 'All Elevations';
+export const Interactive: Story = {
+  name: 'Interactive (Hoverable)',
+  render: () => (
+    <Stack direction="row" gap="md">
+      {(['none', 'xs', 'sm', 'md', 'lg'] as const).map((elevation) => (
+        <Card key={elevation} elevation={elevation} interactive padding="md" style={{ width: 160 }}>
+          <Stack direction="column" gap="xs">
+            <Text color="subtle" style={{ fontSize: '0.75rem' }}>
+              elevation
+            </Text>
+            <Text>{elevation}</Text>
+          </Stack>
+        </Card>
+      ))}
+    </Stack>
+  ),
+};
+
+export const Elevations: Story = {
+  name: 'All Elevations',
+  render: () => (
+    <Stack direction="row" gap="lg" align="center">
+      {(['none', 'xs', 'sm', 'md', 'lg'] as const).map((elevation) => (
+        <Card key={elevation} elevation={elevation} padding="md" bordered style={{ width: 140 }}>
+          <Text style={{ textAlign: 'center' }}>{elevation}</Text>
+        </Card>
+      ))}
+    </Stack>
+  ),
+};
