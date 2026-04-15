@@ -64,5 +64,5 @@ export { Icon, NamedIcon, icons } from './Icon/Icon';
 export type { IconProps, IconSize, IconColor, IconName } from './Icon/Icon';
 
 // Accordion
-export { Accordion } from './Accordion/Accordion';
-export type { AccordionProps } from './Accordion/Accordion';
+export { Accordion, AccordionItem } from './Accordion/Accordion';
+export type { AccordionProps, AccordionItemProps, AccordionVariant } from './Accordion/Accordion';

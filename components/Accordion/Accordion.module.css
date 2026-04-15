@@ -1,12 +1,107 @@
+/* Root */
 .root {
-  background-color: var(--ds-color-surface-default);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Variants */
+.variant-default {
   border: 1px solid var(--ds-color-border-default);
   border-radius: var(--ds-borderRadius-card);
-  padding: var(--ds-spacing-component-md);
-  color: var(--ds-color-text-default);
+  overflow: hidden;
+  background-color: var(--ds-color-surface-default);
+}
+
+.variant-default .item + .item {
+  border-top: 1px solid var(--ds-color-border-default);
 }
 
 .variant-outlined {
-  background-color: transparent;
-  border-color: var(--ds-color-border-strong);
+  gap: var(--ds-spacing-component-sm);
+}
+
+.variant-outlined .item {
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-borderRadius-card);
+  overflow: hidden;
+  background-color: var(--ds-color-surface-default);
+}
+
+.variant-flush .item + .item {
+  border-top: 1px solid var(--ds-color-border-subtle);
+}
+
+/* Item */
+.itemDisabled {
+  opacity: 0.45;
+}
+
+/* Trigger */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--ds-spacing-component-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ds-color-text-default);
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-md);
+  font-weight: var(--ds-typography-fontWeight-medium);
+  line-height: var(--ds-typography-lineHeight-normal);
+  transition: background-color var(--ds-transition-fast);
+}
+
+.trigger:hover:not(:disabled) {
+  background-color: var(--ds-color-background-subtle);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--ds-color-border-focus);
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+.triggerLabel {
+  flex: 1;
+}
+
+/* Chevron */
+.chevron {
+  flex-shrink: 0;
+  margin-left: var(--ds-spacing-component-sm);
+  color: var(--ds-color-text-subtle);
+  display: flex;
+  align-items: center;
+  transition: transform var(--ds-transition-normal);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Panel — grid trick for height animation with overflow hidden */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--ds-transition-normal);
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+}
+
+.panelContent {
+  overflow: hidden;
+  padding: 0 var(--ds-spacing-component-md) var(--ds-spacing-component-md);
+  color: var(--ds-color-text-subtle);
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-md);
+  line-height: var(--ds-typography-lineHeight-normal);
 }
