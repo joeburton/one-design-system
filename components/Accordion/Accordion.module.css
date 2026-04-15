@@ -101,8 +101,16 @@
 }
 
 .panelContent {
+  /* overflow: hidden is required for the grid-row height animation.
+     Keep padding: 0 here — padding on this element leaks through when
+     collapsed because an element's own padding is not clipped by its
+     own overflow: hidden. All padding lives on .panelInner instead. */
   overflow: hidden;
-  /* 2px top padding gives focus rings on interactive children room to render */
+}
+
+.panelInner {
+  /* 2px top padding gives focus rings on interactive children room to render
+     without being clipped by the overflow: hidden on .panelContent */
   padding: 2px var(--ds-spacing-component-md) var(--ds-spacing-component-md);
   color: var(--ds-color-text-subtle);
   font-family: var(--ds-typography-fontFamily-body);
