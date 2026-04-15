@@ -12,10 +12,8 @@
       "import": "./dist/one-ds.es.js",
       "require": "./dist/one-ds.umd.js"
     },
-    "./dist/one-design-system.css": "./dist/one-design-system.css",
-    "./styles": "./styles/tokens.css",
-    "./styles/dark": "./styles/themes/dark.css",
-    "./styles/global": "./styles/global.css"
+    "./styles": "./dist/one-design-system.css",
+    "./styles/dark": "./styles/themes/dark.css"
   },
   "files": [
     "dist",
