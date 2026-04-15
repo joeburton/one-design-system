@@ -3,15 +3,28 @@
   "version": "0.1.0",
   "description": "One Design System — token-driven, theme-aware React component library",
   "type": "module",
+  "main": "./dist/one-ds.umd.js",
+  "module": "./dist/one-ds.es.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./components/index.ts",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/one-ds.es.js",
+      "require": "./dist/one-ds.umd.js"
+    },
+    "./dist/one-design-system.css": "./dist/one-design-system.css",
     "./styles": "./styles/tokens.css",
     "./styles/dark": "./styles/themes/dark.css",
     "./styles/global": "./styles/global.css"
   },
+  "files": [
+    "dist",
+    "styles"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "prepublishOnly": "npm run tokens:build && npm run build",
     "preview": "vite preview",
     "generate:component": "tsx scripts/generate-component.ts",
     "tokens:validate": "tsx scripts/validate-tokens.ts",
@@ -44,6 +57,8 @@
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "@vitest/ui": "^2.1.0",
     "jsdom": "^25.0.0",
     "prettier": "^3.3.0",
     "react": "^18.3.0",
@@ -52,9 +67,8 @@
     "tsx": "^4.19.0",
     "typescript": "^5.6.0",
     "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^2.1.0",
-    "@vitest/coverage-v8": "^2.1.0",
-    "@vitest/ui": "^2.1.0",
     "zod": "^3.23.0"
   }
 }
