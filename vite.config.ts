@@ -1,12 +1,39 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readFileSync, writeFileSync } from 'node:fs';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
+function bundleCss(): Plugin {
+  return {
+    name: 'bundle-base-css',
+    apply: 'build',
+    closeBundle() {
+      const tokens = readFileSync(resolve(__dirname, 'styles/tokens.css'), 'utf-8');
+      const global = readFileSync(resolve(__dirname, 'styles/global.css'), 'utf-8');
+      const components = readFileSync(resolve(__dirname, 'dist/one-design-system.css'), 'utf-8');
+      writeFileSync(
+        resolve(__dirname, 'dist/one-design-system.css'),
+        `${tokens}\n${global}\n${components}`,
+      );
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      include: ['components', 'hooks', 'utils'],
+      exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.test.ts'],
+      outDir: 'dist',
+      insertTypesEntry: true,
+    }),
+    bundleCss(),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './'),
