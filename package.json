@@ -13,6 +13,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "generate:component": "tsx scripts/generate-component.ts",
     "tokens:validate": "tsx scripts/validate-tokens.ts",
     "tokens:build": "tsx scripts/transform-tokens.ts",
     "tokens:check": "npm run tokens:validate && npm run tokens:build",
