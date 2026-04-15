@@ -70,6 +70,9 @@
 
 .triggerLabel {
   flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Chevron */
@@ -99,9 +102,12 @@
 
 .panelContent {
   overflow: hidden;
-  padding: 0 var(--ds-spacing-component-md) var(--ds-spacing-component-md);
+  /* 2px top padding gives focus rings on interactive children room to render */
+  padding: 2px var(--ds-spacing-component-md) var(--ds-spacing-component-md);
   color: var(--ds-color-text-subtle);
   font-family: var(--ds-typography-fontFamily-body);
   font-size: var(--ds-typography-fontSize-md);
   line-height: var(--ds-typography-lineHeight-normal);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
