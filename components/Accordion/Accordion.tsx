@@ -76,7 +76,9 @@ export function AccordionItem({
         aria-labelledby={triggerId}
         className={cx(styles.panel, isOpen && styles.panelOpen)}
       >
-        <div className={styles.panelContent}>{children}</div>
+        <div className={styles.panelContent}>
+          <div className={styles.panelInner}>{children}</div>
+        </div>
       </div>
     </div>
   );
