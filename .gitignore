@@ -8,3 +8,7 @@ coverage/
 .env.*
 !.env.example
 tokens/types/token-vars.generated.ts
+
+# Claude Code worktrees — these contain .git files which GitHub Actions
+# misidentifies as unregistered submodules during post-job cleanup.
+.claude/worktrees/
