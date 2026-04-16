@@ -1,5 +1,7 @@
 # One Design System
 
+[![CI](https://github.com/joeburton/one-design-system/actions/workflows/ci.yml/badge.svg)](https://github.com/joeburton/one-design-system/actions/workflows/ci.yml)
+
 A production-ready, token-driven React + TypeScript component library. Tokens are the single source of truth. Themes are applied via CSS variable overrides — zero component-level logic.
 
 ---
