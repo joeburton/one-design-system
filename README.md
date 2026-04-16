@@ -264,17 +264,17 @@ CSS variable prefix: `--ds-` (design system)
 
 ## Scripts Reference
 
-| Script                    | Description                  |
-| ------------------------- | ---------------------------- |
-| `npm run dev`             | Vite dev server              |
-| `npm run build`           | Production build             |
-| `npm run tokens:validate` | Validate token JSON with Zod |
-| `npm run tokens:build`    | Transform tokens → CSS + TS  |
-| `npm run storybook`       | Storybook dev server         |
-| `npm run build-storybook` | Build Storybook static site  |
-| `npm run test`            | Run all tests                |
-| `npm run test:coverage`   | Tests with coverage report   |
-| `npm run typecheck`            | TypeScript type checking               |
-| `npm run generate:component`   | Scaffold a new component with all files|
-| `npm run lint`                 | ESLint                                 |
-| `npm run format`               | Prettier                               |
+| Script                       | Description                             |
+| ---------------------------- | --------------------------------------- |
+| `npm run dev`                | Vite dev server                         |
+| `npm run build`              | Production build                        |
+| `npm run tokens:validate`    | Validate token JSON with Zod            |
+| `npm run tokens:build`       | Transform tokens → CSS + TS             |
+| `npm run storybook`          | Storybook dev server                    |
+| `npm run build-storybook`    | Build Storybook static site             |
+| `npm run test`               | Run all tests                           |
+| `npm run test:coverage`      | Tests with coverage report              |
+| `npm run typecheck`          | TypeScript type checking                |
+| `npm run generate:component` | Scaffold a new component with all files |
+| `npm run lint`               | ESLint                                  |
+| `npm run format`             | Prettier                                |

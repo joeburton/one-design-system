@@ -1,4 +1,11 @@
-import { type HTMLAttributes, type ReactNode, createContext, useContext, useState, useId } from 'react';
+import {
+  type HTMLAttributes,
+  type ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useId,
+} from 'react';
 import { cx } from '../../utils/token.utils';
 import styles from './Accordion.module.css';
 
@@ -98,7 +105,7 @@ export function Accordion({
   });
 
   function toggle(id: string) {
-    setOpenItems(prev => {
+    setOpenItems((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
         next.delete(id);

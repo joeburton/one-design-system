@@ -1,0 +1,9 @@
+# Generated files — do not format
+styles/tokens.css
+styles/themes/dark.css
+tokens/types/token-vars.generated.ts
+
+# Dependencies and build output
+node_modules
+dist
+coverage

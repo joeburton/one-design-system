@@ -16,7 +16,7 @@ function bundleCss(): Plugin {
       const components = readFileSync(resolve(__dirname, 'dist/one-design-system.css'), 'utf-8');
       writeFileSync(
         resolve(__dirname, 'dist/one-design-system.css'),
-        `${tokens}\n${global}\n${components}`,
+        `${tokens}\n${global}\n${components}`
       );
     },
   };
@@ -24,9 +24,7 @@ function bundleCss(): Plugin {
 
 export default defineConfig(async ({ command }) => {
   const isLibraryBuild = command === 'build';
-  const { default: dts } = isLibraryBuild
-    ? await import('vite-plugin-dts')
-    : { default: null };
+  const { default: dts } = isLibraryBuild ? await import('vite-plugin-dts') : { default: null };
 
   return {
     plugins: [

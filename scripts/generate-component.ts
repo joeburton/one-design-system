@@ -27,7 +27,9 @@ if (!name) {
 
 if (!/^[A-Z][A-Za-z0-9]*$/.test(name)) {
   console.error(`Error: "${name}" is not valid PascalCase.`);
-  console.error('  Component names must start with an uppercase letter and contain only letters and digits.');
+  console.error(
+    '  Component names must start with an uppercase letter and contain only letters and digits.'
+  );
   process.exit(1);
 }
 
