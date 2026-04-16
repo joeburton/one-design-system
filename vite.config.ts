@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, type Plugin, type UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,7 +22,7 @@ function bundleCss(): Plugin {
   };
 }
 
-export default defineConfig(async ({ command }) => {
+export default defineConfig(async ({ command }): Promise<UserConfig> => {
   const isLibraryBuild = command === 'build';
   const { default: dts } = isLibraryBuild ? await import('vite-plugin-dts') : { default: null };
 
@@ -61,7 +61,7 @@ export default defineConfig(async ({ command }) => {
       lib: {
         entry: resolve(__dirname, 'components/index.ts'),
         name: 'OneDesignSystem',
-        fileName: (format) => `one-ds.${format}.js`,
+        fileName: (format: string) => `one-ds.${format}.js`,
       },
       rollupOptions: {
         external: ['react', 'react-dom', 'react/jsx-runtime'],
