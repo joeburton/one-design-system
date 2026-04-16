@@ -15,13 +15,16 @@ export default meta;
 export const Default: StoryFn<typeof Accordion> = () => (
   <Accordion>
     <Accordion.Item id="item-1" title="What is a design system?">
-      A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications.
+      A design system is a collection of reusable components, guided by clear standards, that can be
+      assembled to build any number of applications.
     </Accordion.Item>
     <Accordion.Item id="item-2" title="Why use design tokens?">
-      Design tokens are the single source of truth for your design decisions. They allow you to maintain consistency across platforms and make global changes easily.
+      Design tokens are the single source of truth for your design decisions. They allow you to
+      maintain consistency across platforms and make global changes easily.
     </Accordion.Item>
     <Accordion.Item id="item-3" title="How do themes work?">
-      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute. No component-level theme logic is needed.
+      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute.
+      No component-level theme logic is needed.
     </Accordion.Item>
   </Accordion>
 );
@@ -29,13 +32,16 @@ export const Default: StoryFn<typeof Accordion> = () => (
 export const DefaultOpenItem: StoryFn<typeof Accordion> = () => (
   <Accordion defaultOpen="item-2">
     <Accordion.Item id="item-1" title="What is a design system?">
-      A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications.
+      A design system is a collection of reusable components, guided by clear standards, that can be
+      assembled to build any number of applications.
     </Accordion.Item>
     <Accordion.Item id="item-2" title="Why use design tokens?">
-      Design tokens are the single source of truth for your design decisions. They allow you to maintain consistency across platforms and make global changes easily.
+      Design tokens are the single source of truth for your design decisions. They allow you to
+      maintain consistency across platforms and make global changes easily.
     </Accordion.Item>
     <Accordion.Item id="item-3" title="How do themes work?">
-      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute. No component-level theme logic is needed.
+      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute.
+      No component-level theme logic is needed.
     </Accordion.Item>
   </Accordion>
 );
@@ -43,13 +49,16 @@ export const DefaultOpenItem: StoryFn<typeof Accordion> = () => (
 export const AllowMultiple: StoryFn<typeof Accordion> = () => (
   <Accordion allowMultiple defaultOpen={['item-1', 'item-3']}>
     <Accordion.Item id="item-1" title="What is a design system?">
-      A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications.
+      A design system is a collection of reusable components, guided by clear standards, that can be
+      assembled to build any number of applications.
     </Accordion.Item>
     <Accordion.Item id="item-2" title="Why use design tokens?">
-      Design tokens are the single source of truth for your design decisions. They allow you to maintain consistency across platforms and make global changes easily.
+      Design tokens are the single source of truth for your design decisions. They allow you to
+      maintain consistency across platforms and make global changes easily.
     </Accordion.Item>
     <Accordion.Item id="item-3" title="How do themes work?">
-      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute. No component-level theme logic is needed.
+      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute.
+      No component-level theme logic is needed.
     </Accordion.Item>
   </Accordion>
 );
@@ -57,13 +66,16 @@ export const AllowMultiple: StoryFn<typeof Accordion> = () => (
 export const Outlined: StoryFn<typeof Accordion> = () => (
   <Accordion variant="outlined">
     <Accordion.Item id="item-1" title="What is a design system?">
-      A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications.
+      A design system is a collection of reusable components, guided by clear standards, that can be
+      assembled to build any number of applications.
     </Accordion.Item>
     <Accordion.Item id="item-2" title="Why use design tokens?">
-      Design tokens are the single source of truth for your design decisions. They allow you to maintain consistency across platforms and make global changes easily.
+      Design tokens are the single source of truth for your design decisions. They allow you to
+      maintain consistency across platforms and make global changes easily.
     </Accordion.Item>
     <Accordion.Item id="item-3" title="How do themes work?">
-      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute. No component-level theme logic is needed.
+      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute.
+      No component-level theme logic is needed.
     </Accordion.Item>
   </Accordion>
 );
@@ -71,13 +83,16 @@ export const Outlined: StoryFn<typeof Accordion> = () => (
 export const Flush: StoryFn<typeof Accordion> = () => (
   <Accordion variant="flush">
     <Accordion.Item id="item-1" title="What is a design system?">
-      A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications.
+      A design system is a collection of reusable components, guided by clear standards, that can be
+      assembled to build any number of applications.
     </Accordion.Item>
     <Accordion.Item id="item-2" title="Why use design tokens?">
-      Design tokens are the single source of truth for your design decisions. They allow you to maintain consistency across platforms and make global changes easily.
+      Design tokens are the single source of truth for your design decisions. They allow you to
+      maintain consistency across platforms and make global changes easily.
     </Accordion.Item>
     <Accordion.Item id="item-3" title="How do themes work?">
-      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute. No component-level theme logic is needed.
+      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute.
+      No component-level theme logic is needed.
     </Accordion.Item>
   </Accordion>
 );
@@ -85,13 +100,15 @@ export const Flush: StoryFn<typeof Accordion> = () => (
 export const WithDisabledItem: StoryFn<typeof Accordion> = () => (
   <Accordion>
     <Accordion.Item id="item-1" title="What is a design system?">
-      A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications.
+      A design system is a collection of reusable components, guided by clear standards, that can be
+      assembled to build any number of applications.
     </Accordion.Item>
     <Accordion.Item id="item-2" title="This item is disabled" disabled>
       This content is not accessible when the item is disabled.
     </Accordion.Item>
     <Accordion.Item id="item-3" title="How do themes work?">
-      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute. No component-level theme logic is needed.
+      Themes are implemented via CSS variable overrides using the <code>data-theme</code> attribute.
+      No component-level theme logic is needed.
     </Accordion.Item>
   </Accordion>
 );
@@ -182,8 +199,8 @@ export const WithInteractiveContent: StoryFn<typeof Accordion> = () => (
   <Accordion defaultOpen="item-1">
     <Accordion.Item id="item-1" title="Panel with interactive elements">
       <p style={{ marginBottom: '12px' }}>
-        Tab through the elements below and confirm focus rings are fully visible and not clipped
-        at the top edge of the panel.
+        Tab through the elements below and confirm focus rings are fully visible and not clipped at
+        the top edge of the panel.
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <a href="#">Read the documentation →</a>
