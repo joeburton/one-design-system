@@ -47,7 +47,7 @@ export const Dismissible: Story = {
     title: 'Dismissible Alert',
     variant: 'info',
     children: 'Click the × button to dismiss this alert.',
-    onDismiss: () => alert('dismissed'),
+    onDismiss: () => window.alert('dismissed'),
   },
 };
 

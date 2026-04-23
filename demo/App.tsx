@@ -259,7 +259,7 @@ export function App() {
                 </CardHeader>
                 <CardBody>
                   <Text color="subtle">
-                    Uses <Code>elevation="md"</Code> and <Code>bordered</Code>.
+                    Uses <Code>elevation=&quot;md&quot;</Code> and <Code>bordered</Code>.
                   </Text>
                 </CardBody>
               </Card>
