@@ -19,12 +19,10 @@ export default defineConfig({
       include: ['components/**/*', 'hooks/**/*', 'utils/**/*'],
       exclude: ['**/*.stories.tsx', '**/*.module.css', '**/index.ts'],
       thresholds: {
-        // Thresholds reflect current coverage (Button + Input + utils only).
-        // Raise these as component test suites are added (issues #6, #7).
-        statements: 20,
-        branches: 70,
-        functions: 35,
-        lines: 20,
+        statements: 85,
+        branches: 85,
+        functions: 90,
+        lines: 85,
       },
     },
   },

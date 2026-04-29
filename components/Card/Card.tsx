@@ -63,6 +63,8 @@ export function Card({
         interactive && styles.interactive,
         className
       )}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
       {...rest}
     >
       {children}
