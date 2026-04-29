@@ -63,6 +63,7 @@ export function Card({
         interactive && styles.interactive,
         className
       )}
+      tabIndex={interactive ? 0 : undefined}
       {...rest}
     >
       {children}
