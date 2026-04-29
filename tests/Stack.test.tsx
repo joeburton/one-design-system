@@ -47,7 +47,11 @@ describe('Stack', () => {
 
   describe('as prop', () => {
     it('renders as a <ul> when as="ul"', () => {
-      const { container } = render(<Stack as="ul"><li>Item</li></Stack>);
+      const { container } = render(
+        <Stack as="ul">
+          <li>Item</li>
+        </Stack>
+      );
       expect(container.firstChild?.nodeName).toBe('UL');
     });
 
@@ -83,7 +87,14 @@ describe('Stack', () => {
   });
 
   describe('justify', () => {
-    const justifications: StackJustify[] = ['start', 'center', 'end', 'between', 'around', 'evenly'];
+    const justifications: StackJustify[] = [
+      'start',
+      'center',
+      'end',
+      'between',
+      'around',
+      'evenly',
+    ];
     justifications.forEach((justify) => {
       it(`renders justify="${justify}" without error`, () => {
         render(<Stack justify={justify}>Content</Stack>);

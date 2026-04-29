@@ -141,9 +141,7 @@ describe('Select', () => {
     });
 
     it('has no axe violations with label', async () => {
-      const { container } = render(
-        <Select label="Country" options={flatOptions} />
-      );
+      const { container } = render(<Select label="Country" options={flatOptions} />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
@@ -189,9 +187,7 @@ describe('Select', () => {
   describe('interactions', () => {
     it('fires onChange when selection changes', async () => {
       const onChange = vi.fn();
-      const { user } = setup(
-        <Select options={flatOptions} onChange={onChange} />
-      );
+      const { user } = setup(<Select options={flatOptions} onChange={onChange} />);
       await user.selectOptions(screen.getByRole('combobox'), 'a');
       expect(onChange).toHaveBeenCalled();
     });

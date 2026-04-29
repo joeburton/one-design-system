@@ -28,9 +28,15 @@ function BasicAccordion({
 }) {
   return (
     <Accordion allowMultiple={allowMultiple} defaultOpen={defaultOpen}>
-      <Accordion.Item id="item-1" title="Section 1">Content 1</Accordion.Item>
-      <Accordion.Item id="item-2" title="Section 2">Content 2</Accordion.Item>
-      <Accordion.Item id="item-3" title="Section 3" disabled>Content 3</Accordion.Item>
+      <Accordion.Item id="item-1" title="Section 1">
+        Content 1
+      </Accordion.Item>
+      <Accordion.Item id="item-2" title="Section 2">
+        Content 2
+      </Accordion.Item>
+      <Accordion.Item id="item-3" title="Section 3" disabled>
+        Content 3
+      </Accordion.Item>
     </Accordion>
   );
 }
@@ -197,9 +203,9 @@ describe('Accordion', () => {
   describe('AccordionItem standalone usage', () => {
     it('throws when used outside Accordion', () => {
       const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-      expect(() =>
-        render(<AccordionItem title="Item">Content</AccordionItem>)
-      ).toThrow('Accordion.Item must be used within Accordion');
+      expect(() => render(<AccordionItem title="Item">Content</AccordionItem>)).toThrow(
+        'Accordion.Item must be used within Accordion'
+      );
       spy.mockRestore();
     });
   });
@@ -223,7 +229,9 @@ describe('Accordion', () => {
     });
 
     it('has no axe violations when items are open', async () => {
-      const { container } = render(<BasicAccordion defaultOpen={['item-1', 'item-2']} allowMultiple />);
+      const { container } = render(
+        <BasicAccordion defaultOpen={['item-1', 'item-2']} allowMultiple />
+      );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });

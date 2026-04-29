@@ -8,8 +8,17 @@ import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import {
   Typography,
-  H1, H2, H3, H4, H5, H6,
-  Text, TextSm, Caption, Overline, Code,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Text,
+  TextSm,
+  Caption,
+  Overline,
+  Code,
 } from '../components/Typography/Typography';
 import type { AllVariants, TypographyColor } from '../components/Typography/Typography';
 
@@ -77,14 +86,25 @@ describe('Typography', () => {
     });
 
     it('overrides the default element for a heading variant', () => {
-      render(<Typography variant="h2" as="h3">Title</Typography>);
+      render(
+        <Typography variant="h2" as="h3">
+          Title
+        </Typography>
+      );
       expect(screen.getByText('Title').tagName).toBe('H3');
     });
   });
 
   describe('colors', () => {
     const colors: TypographyColor[] = [
-      'default', 'subtle', 'muted', 'onEmphasis', 'link', 'error', 'success', 'warning',
+      'default',
+      'subtle',
+      'muted',
+      'onEmphasis',
+      'link',
+      'error',
+      'success',
+      'warning',
     ];
     colors.forEach((color) => {
       it(`renders color="${color}" without error`, () => {

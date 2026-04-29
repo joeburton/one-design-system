@@ -139,7 +139,9 @@ describe('Alert', () => {
 
     it('has no axe violations for error alert with title', async () => {
       const { container } = render(
-        <Alert variant="error" title="Error occurred">Something went wrong</Alert>
+        <Alert variant="error" title="Error occurred">
+          Something went wrong
+        </Alert>
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -147,7 +149,9 @@ describe('Alert', () => {
 
     it('has no axe violations for dismissible alert', async () => {
       const { container } = render(
-        <Alert variant="warning" onDismiss={vi.fn()}>Warning message</Alert>
+        <Alert variant="warning" onDismiss={vi.fn()}>
+          Warning message
+        </Alert>
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();

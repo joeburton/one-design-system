@@ -28,39 +28,67 @@ const CheckPath = () => (
 describe('Icon', () => {
   describe('decorative (no label)', () => {
     it('renders an SVG element', () => {
-      const { container } = render(<Icon><CheckPath /></Icon>);
+      const { container } = render(
+        <Icon>
+          <CheckPath />
+        </Icon>
+      );
       expect(container.querySelector('svg')).toBeInTheDocument();
     });
 
     it('is aria-hidden when no label is provided', () => {
-      const { container } = render(<Icon><CheckPath /></Icon>);
+      const { container } = render(
+        <Icon>
+          <CheckPath />
+        </Icon>
+      );
       expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
     });
 
     it('does not have role="img" when decorative', () => {
-      const { container } = render(<Icon><CheckPath /></Icon>);
+      const { container } = render(
+        <Icon>
+          <CheckPath />
+        </Icon>
+      );
       expect(container.querySelector('svg')).not.toHaveAttribute('role');
     });
 
     it('is not focusable (focusable="false")', () => {
-      const { container } = render(<Icon><CheckPath /></Icon>);
+      const { container } = render(
+        <Icon>
+          <CheckPath />
+        </Icon>
+      );
       expect(container.querySelector('svg')).toHaveAttribute('focusable', 'false');
     });
   });
 
   describe('semantic (with label)', () => {
     it('has role="img" when a label is provided', () => {
-      render(<Icon label="Checkmark"><CheckPath /></Icon>);
+      render(
+        <Icon label="Checkmark">
+          <CheckPath />
+        </Icon>
+      );
       expect(screen.getByRole('img', { name: 'Checkmark' })).toBeInTheDocument();
     });
 
     it('sets aria-label to the provided label', () => {
-      render(<Icon label="Success"><CheckPath /></Icon>);
+      render(
+        <Icon label="Success">
+          <CheckPath />
+        </Icon>
+      );
       expect(screen.getByRole('img')).toHaveAttribute('aria-label', 'Success');
     });
 
     it('is not aria-hidden when a label is provided', () => {
-      render(<Icon label="Success"><CheckPath /></Icon>);
+      render(
+        <Icon label="Success">
+          <CheckPath />
+        </Icon>
+      );
       expect(screen.getByRole('img')).not.toHaveAttribute('aria-hidden');
     });
   });
@@ -69,7 +97,11 @@ describe('Icon', () => {
     const sizes: IconSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
     sizes.forEach((size) => {
       it(`renders size="${size}" without error`, () => {
-        const { container } = render(<Icon size={size}><CheckPath /></Icon>);
+        const { container } = render(
+          <Icon size={size}>
+            <CheckPath />
+          </Icon>
+        );
         expect(container.querySelector('svg')).toBeInTheDocument();
       });
     });
@@ -77,12 +109,23 @@ describe('Icon', () => {
 
   describe('colors', () => {
     const colors: IconColor[] = [
-      'inherit', 'default', 'subtle', 'muted', 'primary',
-      'success', 'warning', 'error', 'info',
+      'inherit',
+      'default',
+      'subtle',
+      'muted',
+      'primary',
+      'success',
+      'warning',
+      'error',
+      'info',
     ];
     colors.forEach((color) => {
       it(`renders color="${color}" without error`, () => {
-        const { container } = render(<Icon color={color}><CheckPath /></Icon>);
+        const { container } = render(
+          <Icon color={color}>
+            <CheckPath />
+          </Icon>
+        );
         expect(container.querySelector('svg')).toBeInTheDocument();
       });
     });
@@ -90,7 +133,11 @@ describe('Icon', () => {
 
   describe('className forwarding', () => {
     it('merges custom className', () => {
-      const { container } = render(<Icon className="my-icon"><CheckPath /></Icon>);
+      const { container } = render(
+        <Icon className="my-icon">
+          <CheckPath />
+        </Icon>
+      );
       expect(container.querySelector('svg')).toHaveClass('my-icon');
     });
   });
@@ -99,7 +146,9 @@ describe('Icon', () => {
     it('has no axe violations for a decorative icon', async () => {
       const { container } = render(
         <span>
-          <Icon aria-hidden="true"><CheckPath /></Icon>
+          <Icon aria-hidden="true">
+            <CheckPath />
+          </Icon>
           Completed
         </span>
       );
@@ -108,7 +157,11 @@ describe('Icon', () => {
     });
 
     it('has no axe violations for a semantic icon', async () => {
-      const { container } = render(<Icon label="Checkmark"><CheckPath /></Icon>);
+      const { container } = render(
+        <Icon label="Checkmark">
+          <CheckPath />
+        </Icon>
+      );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });

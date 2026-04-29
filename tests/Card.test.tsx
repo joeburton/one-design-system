@@ -76,7 +76,11 @@ describe('Card', () => {
     });
 
     it('allows tabIndex override via props', () => {
-      const { container } = render(<Card interactive tabIndex={-1}>Card</Card>);
+      const { container } = render(
+        <Card interactive tabIndex={-1}>
+          Card
+        </Card>
+      );
       const card = container.firstChild as HTMLElement;
       expect(card).toHaveAttribute('tabindex', '-1');
     });
@@ -91,17 +95,29 @@ describe('Card', () => {
 
   describe('sub-components via static properties', () => {
     it('Card.Header renders children', () => {
-      render(<Card><Card.Header>Header</Card.Header></Card>);
+      render(
+        <Card>
+          <Card.Header>Header</Card.Header>
+        </Card>
+      );
       expect(screen.getByText('Header')).toBeInTheDocument();
     });
 
     it('Card.Body renders children', () => {
-      render(<Card><Card.Body>Body</Card.Body></Card>);
+      render(
+        <Card>
+          <Card.Body>Body</Card.Body>
+        </Card>
+      );
       expect(screen.getByText('Body')).toBeInTheDocument();
     });
 
     it('Card.Footer renders children', () => {
-      render(<Card><Card.Footer>Footer</Card.Footer></Card>);
+      render(
+        <Card>
+          <Card.Footer>Footer</Card.Footer>
+        </Card>
+      );
       expect(screen.getByText('Footer')).toBeInTheDocument();
     });
 
@@ -144,7 +160,11 @@ describe('Card', () => {
     });
 
     it('has no axe violations for an interactive card', async () => {
-      const { container } = render(<Card interactive aria-label="View profile">Card content</Card>);
+      const { container } = render(
+        <Card interactive aria-label="View profile">
+          Card content
+        </Card>
+      );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
