@@ -1,0 +1,73 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ds-borderRadius-badge);
+  font-family: var(--ds-typography-fontFamily-body);
+  font-weight: var(--ds-typography-fontWeight-medium);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  line-height: 1;
+}
+
+/* Sizes */
+.size-sm {
+  font-size: var(--ds-typography-fontSize-xs);
+  padding: 1px var(--ds-spacing-component-xs);
+  min-height: 18px;
+}
+
+.size-md {
+  font-size: var(--ds-typography-fontSize-xs);
+  padding: 2px var(--ds-spacing-component-sm);
+  min-height: 22px;
+}
+
+/* Dot mode — sized circle, no text */
+.dot {
+  padding: 0;
+  border-radius: 50%;
+}
+
+.dot.size-sm {
+  width: 6px;
+  height: 6px;
+  min-height: unset;
+}
+
+.dot.size-md {
+  width: 8px;
+  height: 8px;
+  min-height: unset;
+}
+
+/* Variants */
+.variant-default {
+  background-color: var(--ds-color-background-muted);
+  color: var(--ds-color-text-subtle);
+  border-color: var(--ds-color-border-default);
+}
+
+.variant-info {
+  background-color: var(--ds-color-status-infoMuted);
+  color: var(--ds-color-status-infoText);
+  border-color: var(--ds-color-status-infoBorder);
+}
+
+.variant-success {
+  background-color: var(--ds-color-status-successMuted);
+  color: var(--ds-color-status-successText);
+  border-color: var(--ds-color-status-successBorder);
+}
+
+.variant-warning {
+  background-color: var(--ds-color-status-warningMuted);
+  color: var(--ds-color-status-warningText);
+  border-color: var(--ds-color-status-warningBorder);
+}
+
+.variant-error {
+  background-color: var(--ds-color-status-errorMuted);
+  color: var(--ds-color-status-errorText);
+  border-color: var(--ds-color-status-errorBorder);
+}
