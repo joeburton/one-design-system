@@ -66,3 +66,11 @@ export type { IconProps, IconSize, IconColor, IconName } from './Icon/Icon';
 // Accordion
 export { Accordion, AccordionItem } from './Accordion/Accordion';
 export type { AccordionProps, AccordionItemProps, AccordionVariant } from './Accordion/Accordion';
+
+// Checkbox
+export { Checkbox } from './Checkbox/Checkbox';
+export type { CheckboxProps } from './Checkbox/Checkbox';
+
+// Radio
+export { Radio, RadioGroup } from './Radio/Radio';
+export type { RadioProps, RadioGroupProps } from './Radio/Radio';

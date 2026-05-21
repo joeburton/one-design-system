@@ -1,0 +1,123 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-component-xs);
+}
+
+.label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ds-spacing-component-sm);
+  cursor: pointer;
+  position: relative;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled .label {
+  cursor: not-allowed;
+}
+
+/* Visually hidden — still focusable and keyboard-operable */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Custom control box */
+.control {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--ds-color-border-default);
+  border-radius: 3px;
+  background-color: var(--ds-color-surface-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition:
+    border-color var(--ds-transition-fast),
+    background-color var(--ds-transition-fast),
+    box-shadow var(--ds-transition-fast);
+}
+
+/* Checkmark via ::after */
+.control::after {
+  content: '';
+  display: none;
+  width: 4px;
+  height: 8px;
+  border-right: 2px solid var(--ds-color-surface-default);
+  border-bottom: 2px solid var(--ds-color-surface-default);
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* Indeterminate dash via ::before */
+.control::before {
+  content: '';
+  display: none;
+  width: 8px;
+  height: 2px;
+  background-color: var(--ds-color-surface-default);
+  border-radius: 1px;
+}
+
+/* Checked: fill the box */
+.input:checked + .control,
+.indeterminate {
+  background-color: var(--ds-color-brand-primary);
+  border-color: var(--ds-color-brand-primary);
+}
+
+/* Show checkmark only when checked and not indeterminate */
+.input:checked + .control:not(.indeterminate)::after {
+  display: block;
+}
+
+/* Show indeterminate dash */
+.indeterminate::before {
+  display: block;
+}
+
+/* Focus ring */
+.input:focus-visible + .control {
+  box-shadow:
+    0 0 0 2px var(--ds-color-background-default),
+    0 0 0 4px var(--ds-color-border-focus);
+}
+
+/* Error border */
+.controlError {
+  border-color: var(--ds-color-status-errorBorder);
+}
+
+.labelText {
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-sm);
+  font-weight: var(--ds-typography-fontWeight-normal);
+  color: var(--ds-color-text-default);
+  line-height: var(--ds-typography-lineHeight-normal);
+}
+
+.hint {
+  margin: 0;
+  padding-left: calc(16px + var(--ds-spacing-component-sm));
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-xs);
+  color: var(--ds-color-text-subtle);
+}
+
+.hintError {
+  color: var(--ds-color-status-errorText);
+}
