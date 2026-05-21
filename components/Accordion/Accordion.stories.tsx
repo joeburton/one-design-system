@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { userEvent, within, expect } from '@storybook/test';
 import { Accordion } from './Accordion';
 
 const meta = {
@@ -213,3 +214,41 @@ export const WithInteractiveContent: StoryFn<typeof Accordion> = () => (
     </Accordion.Item>
   </Accordion>
 );
+
+export const KeyboardNavigation: StoryFn<typeof Accordion> = () => (
+  <Accordion>
+    <Accordion.Item id="item-1" title="What is a design system?">
+      A design system is a collection of reusable components guided by clear standards.
+    </Accordion.Item>
+    <Accordion.Item id="item-2" title="Why use design tokens?">
+      Design tokens are the single source of truth for your design decisions.
+    </Accordion.Item>
+  </Accordion>
+);
+KeyboardNavigation.storyName = 'Keyboard: Enter/Space toggles panel';
+KeyboardNavigation.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const [firstTrigger] = canvas.getAllByRole('button');
+
+  // Tab to focus the first trigger
+  await userEvent.tab();
+  await expect(firstTrigger).toHaveFocus();
+  await expect(firstTrigger).toHaveAttribute('aria-expanded', 'false');
+
+  // Enter opens the panel
+  await userEvent.keyboard('{Enter}');
+  await expect(firstTrigger).toHaveAttribute('aria-expanded', 'true');
+
+  // Enter again closes the panel
+  await userEvent.keyboard('{Enter}');
+  await expect(firstTrigger).toHaveAttribute('aria-expanded', 'false');
+
+  // Space also toggles
+  await userEvent.keyboard(' ');
+  await expect(firstTrigger).toHaveAttribute('aria-expanded', 'true');
+
+  // Tab moves focus to next trigger
+  await userEvent.tab();
+  const [, secondTrigger] = canvas.getAllByRole('button');
+  await expect(secondTrigger).toHaveFocus();
+};

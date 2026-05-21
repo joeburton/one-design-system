@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within, expect } from '@storybook/test';
 import { Input } from './Input';
 import { NamedIcon } from '../Icon/Icon';
 
@@ -70,5 +71,22 @@ export const Disabled: Story = {
     label: 'Disabled Input',
     disabled: true,
     defaultValue: 'Cannot edit this',
+  },
+};
+
+export const KeyboardFocus: Story = {
+  name: 'Keyboard: Tab reaches field and accepts input',
+  args: { label: 'Email address', placeholder: 'you@example.com' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox', { name: /email address/i });
+
+    // Tab to focus the input
+    await userEvent.tab();
+    await expect(input).toHaveFocus();
+
+    // Type into the focused input
+    await userEvent.keyboard('hello@example.com');
+    await expect(input).toHaveValue('hello@example.com');
   },
 };

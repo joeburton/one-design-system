@@ -1,4 +1,4 @@
-import { type HTMLAttributes, type ReactNode } from 'react';
+import { type HTMLAttributes, type KeyboardEvent, type ReactNode } from 'react';
 import { cx } from '../../utils/token.utils';
 import styles from './Alert.module.css';
 
@@ -58,14 +58,25 @@ export function Alert({
   onDismiss,
   className,
   children,
+  onKeyDown,
   ...rest
 }: AlertProps): JSX.Element {
   const resolvedIcon = icon === null ? null : (icon ?? DEFAULT_ICONS[variant]);
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape' && onDismiss) {
+      onDismiss();
+    }
+    onKeyDown?.(e);
+  };
+
   return (
     <div
       role={variant === 'error' || variant === 'warning' ? 'alert' : 'status'}
       aria-live={variant === 'error' || variant === 'warning' ? 'assertive' : 'polite'}
       className={cx(styles.alert, styles[`variant-${variant}`], className)}
+      tabIndex={onDismiss ? -1 : undefined}
+      onKeyDown={handleKeyDown}
       {...rest}
     >
       {resolvedIcon && (

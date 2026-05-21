@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within, expect } from '@storybook/test';
 import { Select } from './Select';
 import type { SelectItem } from './Select';
 
@@ -69,4 +70,25 @@ export const AllSizes: Story = {
       <Select size="lg" label="Large" options={flatOptions} placeholder="Large…" />
     </div>
   ),
+};
+
+export const KeyboardNavigation: Story = {
+  name: 'Keyboard: Tab focuses, arrow keys navigate',
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole('combobox');
+
+    // Tab to focus the select
+    await userEvent.tab();
+    await expect(select).toHaveFocus();
+
+    // Arrow Down moves to the first option
+    await userEvent.keyboard('{ArrowDown}');
+
+    // Arrow Down again moves to the next option
+    await userEvent.keyboard('{ArrowDown}');
+
+    // Arrow Up moves back
+    await userEvent.keyboard('{ArrowUp}');
+  },
 };

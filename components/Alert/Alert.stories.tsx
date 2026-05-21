@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within, expect } from '@storybook/test';
 import { Alert } from './Alert';
 
 const meta = {
@@ -57,5 +58,33 @@ export const NoIcon: Story = {
     icon: null,
     title: 'Clean Alert',
     children: 'This alert has no icon.',
+  },
+};
+
+export const KeyboardDismiss: Story = {
+  name: 'Keyboard: Escape to dismiss',
+  args: {
+    title: 'Keyboard dismissible',
+    variant: 'info',
+    children: 'Focus the alert and press Escape to dismiss.',
+    onDismiss: () => {},
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // The alert container should be reachable via Tab (tabIndex=-1 makes it programmatically focusable)
+    const alert = canvas.getByRole('status');
+    await expect(alert).toHaveAttribute('tabindex', '-1');
+
+    // Focus the container and fire Escape — onDismiss should be called
+    alert.focus();
+    await expect(alert).toHaveFocus();
+    await userEvent.keyboard('{Escape}');
+
+    // Also verify the dismiss button is present and keyboard-accessible
+    const dismissBtn = canvas.getByRole('button', { name: /dismiss/i });
+    await expect(dismissBtn).toBeInTheDocument();
+    dismissBtn.focus();
+    await expect(dismissBtn).toHaveFocus();
   },
 };

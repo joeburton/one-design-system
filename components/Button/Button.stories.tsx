@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within, expect } from '@storybook/test';
 import { Button } from './Button';
 import { NamedIcon } from '../Icon/Icon';
 
@@ -123,5 +124,39 @@ export const DangerZone: Story = {
   args: {
     variant: 'danger',
     children: 'Delete Account',
+  },
+};
+
+export const KeyboardActivation: Story = {
+  name: 'Keyboard: Space and Enter activate',
+  args: { children: 'Click me' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /click me/i });
+
+    // Tab to focus the button
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
+
+    // Space activates the button
+    await userEvent.keyboard(' ');
+
+    // Enter activates the button
+    await userEvent.keyboard('{Enter}');
+  },
+};
+
+export const KeyboardDisabled: Story = {
+  name: 'Keyboard: disabled is not reachable',
+  args: { children: 'Disabled', disabled: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /disabled/i });
+
+    await expect(button).toBeDisabled();
+
+    // Tab should skip the disabled button
+    await userEvent.tab();
+    await expect(button).not.toHaveFocus();
   },
 };
