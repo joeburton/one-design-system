@@ -48,7 +48,6 @@ describe('Alert', () => {
 
     it('renders no icon when icon={null}', () => {
       const { container } = render(<Alert icon={null}>Info</Alert>);
-      // Only the dismiss area could have an svg; with no dismiss and no icon there should be none
       expect(container.querySelector('svg')).not.toBeInTheDocument();
     });
 
@@ -60,6 +59,12 @@ describe('Alert', () => {
     it('does not render a dismiss button without onDismiss', () => {
       render(<Alert>Alert</Alert>);
       expect(screen.queryByRole('button', { name: /dismiss/i })).not.toBeInTheDocument();
+    });
+
+    it('applies variant class to the container', () => {
+      render(<Alert variant="error">Error</Alert>);
+      const alert = screen.getByRole('alert');
+      expect(alert.className).toMatch(/variant-error/);
     });
   });
 
@@ -113,13 +118,69 @@ describe('Alert', () => {
       expect(onDismiss).toHaveBeenCalledTimes(1);
     });
 
-    it('dismiss button is keyboard-accessible', async () => {
+    it('dismiss button is keyboard-accessible via Enter', async () => {
       const onDismiss = vi.fn();
       const { user } = setup(<Alert onDismiss={onDismiss}>Alert</Alert>);
       const btn = screen.getByRole('button', { name: /dismiss/i });
       btn.focus();
       await user.keyboard('{Enter}');
       expect(onDismiss).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('keyboard support', () => {
+    it('has tabIndex=-1 on the container when dismissible', () => {
+      render(<Alert onDismiss={vi.fn()}>Dismissible</Alert>);
+      const container = screen.getByRole('status');
+      expect(container).toHaveAttribute('tabindex', '-1');
+    });
+
+    it('does not have a tabIndex when not dismissible', () => {
+      render(<Alert>Not dismissible</Alert>);
+      const container = screen.getByRole('status');
+      expect(container).not.toHaveAttribute('tabindex');
+    });
+
+    it('calls onDismiss when Escape is pressed with focus on the alert container', async () => {
+      const onDismiss = vi.fn();
+      const { user } = setup(<Alert onDismiss={onDismiss}>Press Escape</Alert>);
+      const container = screen.getByRole('status');
+      container.focus();
+      await user.keyboard('{Escape}');
+      expect(onDismiss).toHaveBeenCalledOnce();
+    });
+
+    it('calls onDismiss when Escape is pressed with focus on the dismiss button', async () => {
+      const onDismiss = vi.fn();
+      const { user } = setup(<Alert onDismiss={onDismiss}>Press Escape on button</Alert>);
+      const button = screen.getByRole('button', { name: /dismiss/i });
+      button.focus();
+      await user.keyboard('{Escape}');
+      expect(onDismiss).toHaveBeenCalledOnce();
+    });
+
+    it('does not call onDismiss for other keys', async () => {
+      const onDismiss = vi.fn();
+      const { user } = setup(<Alert onDismiss={onDismiss}>Press random key</Alert>);
+      const container = screen.getByRole('status');
+      container.focus();
+      await user.keyboard('{Enter}');
+      expect(onDismiss).not.toHaveBeenCalled();
+    });
+
+    it('forwards onKeyDown alongside the Escape handler', async () => {
+      const onDismiss = vi.fn();
+      const onKeyDown = vi.fn();
+      const { user } = setup(
+        <Alert onDismiss={onDismiss} onKeyDown={onKeyDown}>
+          Key events
+        </Alert>
+      );
+      const container = screen.getByRole('status');
+      container.focus();
+      await user.keyboard('{Escape}');
+      expect(onDismiss).toHaveBeenCalledOnce();
+      expect(onKeyDown).toHaveBeenCalledOnce();
     });
   });
 
