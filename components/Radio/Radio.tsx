@@ -133,7 +133,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
           value={value}
           disabled={isDisabled}
           aria-describedby={describedBy}
-          aria-invalid={error ? true : undefined}
           className={styles.input}
           onChange={handleChange}
           {...rest}
