@@ -37,8 +37,12 @@ export const AllVariants: StoryFn = () => (
 
 export const AllSizes: StoryFn = () => (
   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-    <Badge size="sm" variant="info">Small</Badge>
-    <Badge size="md" variant="info">Medium</Badge>
+    <Badge size="sm" variant="info">
+      Small
+    </Badge>
+    <Badge size="md" variant="info">
+      Medium
+    </Badge>
   </div>
 );
 
