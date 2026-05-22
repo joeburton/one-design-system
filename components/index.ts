@@ -67,6 +67,14 @@ export type { IconProps, IconSize, IconColor, IconName } from './Icon/Icon';
 export { Accordion, AccordionItem } from './Accordion/Accordion';
 export type { AccordionProps, AccordionItemProps, AccordionVariant } from './Accordion/Accordion';
 
+// Badge
+export { Badge } from './Badge/Badge';
+export type { BadgeProps, BadgeVariant, BadgeSize } from './Badge/Badge';
+
+// Spinner
+export { Spinner } from './Spinner/Spinner';
+export type { SpinnerProps, SpinnerSize } from './Spinner/Spinner';
+
 // Checkbox
 export { Checkbox } from './Checkbox/Checkbox';
 export type { CheckboxProps } from './Checkbox/Checkbox';

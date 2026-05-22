@@ -1,0 +1,56 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Size scale — structural values, not design decisions */
+.size-sm {
+  --spinner-size: 16px;
+  --spinner-thickness: 2px;
+}
+
+.size-md {
+  --spinner-size: 24px;
+  --spinner-thickness: 2px;
+}
+
+.size-lg {
+  --spinner-size: 32px;
+  --spinner-thickness: 3px;
+}
+
+.wheel {
+  display: block;
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--spinner-thickness) solid var(--ds-color-border-default);
+  border-top-color: var(--ds-color-brand-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel {
+    animation-play-state: paused;
+  }
+}
+
+/* Standard visually-hidden / sr-only technique */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

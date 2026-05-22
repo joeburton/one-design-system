@@ -126,6 +126,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   return (
     <div className={cx(styles.root, isDisabled && styles.disabled, className)}>
       <label className={styles.label} htmlFor={id}>
+        {/* eslint-disable-next-line jsx-a11y/role-supports-aria-props */}
         <input
           ref={ref}
           type="radio"
