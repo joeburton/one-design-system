@@ -108,6 +108,11 @@ All CSS variables are prefixed `--ds-` (design system).
 - `borderRadius` → button, input, card, badge, tooltip
 - `elevation` → none, xs, sm, md, lg, xl (box-shadow values)
 - `transition` → fast (100ms), normal (200ms), slow (300ms)
+- `zIndex` → hide (-1), base (0), raised (1), dropdown (100), sticky (200), overlay (300), modal (400), toast (500), tooltip (600)
+- `opacity` → disabled (0.4), muted (0.6), overlay (0.5)
+- `breakpoint` → sm (640px), md (768px), lg (1024px), xl (1280px), 2xl (1536px) — **JS constants only, not CSS vars** (CSS custom properties cannot be used in media queries — import `breakpoints` from `token-vars.generated.ts`)
+- `animation` → spin (1s), pulse (2s) durations
+- `easing` → easeIn, easeOut, easeInOut (cubic-bezier strings)
 
 ### After editing any token JSON
 

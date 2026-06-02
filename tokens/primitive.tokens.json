@@ -118,5 +118,37 @@
     "fast": { "$value": "100ms", "$type": "duration" },
     "normal": { "$value": "200ms", "$type": "duration" },
     "slow": { "$value": "300ms", "$type": "duration" }
+  },
+  "zIndex": {
+    "hide": { "$value": -1, "$type": "number" },
+    "base": { "$value": 0, "$type": "number" },
+    "raised": { "$value": 1, "$type": "number" },
+    "dropdown": { "$value": 100, "$type": "number" },
+    "sticky": { "$value": 200, "$type": "number" },
+    "overlay": { "$value": 300, "$type": "number" },
+    "modal": { "$value": 400, "$type": "number" },
+    "toast": { "$value": 500, "$type": "number" },
+    "tooltip": { "$value": 600, "$type": "number" }
+  },
+  "opacity": {
+    "disabled": { "$value": 0.4, "$type": "number" },
+    "muted": { "$value": 0.6, "$type": "number" },
+    "overlay": { "$value": 0.5, "$type": "number" }
+  },
+  "breakpoint": {
+    "sm": { "$value": "640px", "$type": "dimension" },
+    "md": { "$value": "768px", "$type": "dimension" },
+    "lg": { "$value": "1024px", "$type": "dimension" },
+    "xl": { "$value": "1280px", "$type": "dimension" },
+    "2xl": { "$value": "1536px", "$type": "dimension" }
+  },
+  "animation": {
+    "spin": { "$value": "1s", "$type": "duration" },
+    "pulse": { "$value": "2s", "$type": "duration" }
+  },
+  "easing": {
+    "easeIn": { "$value": "cubic-bezier(0.4, 0, 1, 1)" },
+    "easeOut": { "$value": "cubic-bezier(0, 0, 0.2, 1)" },
+    "easeInOut": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)" }
   }
 }

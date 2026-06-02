@@ -126,5 +126,37 @@
     "fast": { "$value": "100ms cubic-bezier(0, 0, 0.2, 1)", "$type": "duration" },
     "normal": { "$value": "200ms cubic-bezier(0.4, 0, 0.2, 1)", "$type": "duration" },
     "slow": { "$value": "300ms cubic-bezier(0.4, 0, 0.2, 1)", "$type": "duration" }
+  },
+  "zIndex": {
+    "hide": { "$value": "{zIndex.hide}", "$type": "number" },
+    "base": { "$value": "{zIndex.base}", "$type": "number" },
+    "raised": { "$value": "{zIndex.raised}", "$type": "number" },
+    "dropdown": { "$value": "{zIndex.dropdown}", "$type": "number" },
+    "sticky": { "$value": "{zIndex.sticky}", "$type": "number" },
+    "overlay": { "$value": "{zIndex.overlay}", "$type": "number" },
+    "modal": { "$value": "{zIndex.modal}", "$type": "number" },
+    "toast": { "$value": "{zIndex.toast}", "$type": "number" },
+    "tooltip": { "$value": "{zIndex.tooltip}", "$type": "number" }
+  },
+  "opacity": {
+    "disabled": { "$value": "{opacity.disabled}", "$type": "number" },
+    "muted": { "$value": "{opacity.muted}", "$type": "number" },
+    "overlay": { "$value": "{opacity.overlay}", "$type": "number" }
+  },
+  "breakpoint": {
+    "sm": { "$value": "{breakpoint.sm}", "$type": "dimension" },
+    "md": { "$value": "{breakpoint.md}", "$type": "dimension" },
+    "lg": { "$value": "{breakpoint.lg}", "$type": "dimension" },
+    "xl": { "$value": "{breakpoint.xl}", "$type": "dimension" },
+    "2xl": { "$value": "{breakpoint.2xl}", "$type": "dimension" }
+  },
+  "animation": {
+    "spin": { "$value": "{animation.spin}", "$type": "duration" },
+    "pulse": { "$value": "{animation.pulse}", "$type": "duration" }
+  },
+  "easing": {
+    "easeIn": { "$value": "{easing.easeIn}" },
+    "easeOut": { "$value": "{easing.easeOut}" },
+    "easeInOut": { "$value": "{easing.easeInOut}" }
   }
 }
