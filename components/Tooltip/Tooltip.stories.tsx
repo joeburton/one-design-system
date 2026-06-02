@@ -53,7 +53,10 @@ export const WithDelay: Story = {
 
 export const OnIcon: StoryFn<typeof Tooltip> = () => (
   <Tooltip content="Delete this item" placement="top">
-    <button aria-label="Delete" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8 }}>
+    <button
+      aria-label="Delete"
+      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8 }}
+    >
       🗑️
     </button>
   </Tooltip>

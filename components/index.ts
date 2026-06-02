@@ -85,7 +85,12 @@ export type { RadioProps, RadioGroupProps } from './Radio/Radio';
 
 // Textarea
 export { Textarea } from './Textarea/Textarea';
-export type { TextareaProps, TextareaSize, TextareaStatus, TextareaResize } from './Textarea/Textarea';
+export type {
+  TextareaProps,
+  TextareaSize,
+  TextareaStatus,
+  TextareaResize,
+} from './Textarea/Textarea';
 
 // Tooltip
 export { Tooltip } from './Tooltip/Tooltip';
@@ -93,4 +98,10 @@ export type { TooltipProps, TooltipPlacement } from './Tooltip/Tooltip';
 
 // Tabs
 export { Tabs, TabList, Tab, TabPanel } from './Tabs/Tabs';
-export type { TabsProps, TabListProps, TabProps, TabPanelProps, TabsOrientation } from './Tabs/Tabs';
+export type {
+  TabsProps,
+  TabListProps,
+  TabProps,
+  TabPanelProps,
+  TabsOrientation,
+} from './Tabs/Tabs';

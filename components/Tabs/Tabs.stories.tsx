@@ -54,12 +54,20 @@ export const WithDisabledTab: StoryFn<typeof Tabs> = () => (
   <Tabs defaultValue="tab1">
     <TabList>
       <Tab value="tab1">Available</Tab>
-      <Tab value="tab2" disabled>Disabled</Tab>
+      <Tab value="tab2" disabled>
+        Disabled
+      </Tab>
       <Tab value="tab3">Also Available</Tab>
     </TabList>
-    <TabPanel value="tab1"><p>This tab is available.</p></TabPanel>
-    <TabPanel value="tab2"><p>This tab is disabled.</p></TabPanel>
-    <TabPanel value="tab3"><p>This tab is also available.</p></TabPanel>
+    <TabPanel value="tab1">
+      <p>This tab is available.</p>
+    </TabPanel>
+    <TabPanel value="tab2">
+      <p>This tab is disabled.</p>
+    </TabPanel>
+    <TabPanel value="tab3">
+      <p>This tab is also available.</p>
+    </TabPanel>
   </Tabs>
 );
 
@@ -67,16 +75,24 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
   const [value, setValue] = useState('tab1');
   return (
     <div>
-      <p style={{ marginBottom: 16 }}>Active tab: <strong>{value}</strong></p>
+      <p style={{ marginBottom: 16 }}>
+        Active tab: <strong>{value}</strong>
+      </p>
       <Tabs value={value} onChange={setValue}>
         <TabList>
           <Tab value="tab1">First</Tab>
           <Tab value="tab2">Second</Tab>
           <Tab value="tab3">Third</Tab>
         </TabList>
-        <TabPanel value="tab1"><p>First panel content.</p></TabPanel>
-        <TabPanel value="tab2"><p>Second panel content.</p></TabPanel>
-        <TabPanel value="tab3"><p>Third panel content.</p></TabPanel>
+        <TabPanel value="tab1">
+          <p>First panel content.</p>
+        </TabPanel>
+        <TabPanel value="tab2">
+          <p>Second panel content.</p>
+        </TabPanel>
+        <TabPanel value="tab3">
+          <p>Third panel content.</p>
+        </TabPanel>
       </Tabs>
     </div>
   );
@@ -88,8 +104,12 @@ export const LazyPanels: StoryFn<typeof Tabs> = () => (
       <Tab value="tab1">First</Tab>
       <Tab value="tab2">Second (lazy)</Tab>
     </TabList>
-    <TabPanel value="tab1"><p>First panel — always rendered.</p></TabPanel>
-    <TabPanel value="tab2"><p>Second panel — only rendered when active.</p></TabPanel>
+    <TabPanel value="tab1">
+      <p>First panel — always rendered.</p>
+    </TabPanel>
+    <TabPanel value="tab2">
+      <p>Second panel — only rendered when active.</p>
+    </TabPanel>
   </Tabs>
 );
 
@@ -100,9 +120,15 @@ export const KeyboardNavigation: StoryFn<typeof Tabs> = () => (
       <Tab value="tab2">Second</Tab>
       <Tab value="tab3">Third</Tab>
     </TabList>
-    <TabPanel value="tab1"><p>Panel 1</p></TabPanel>
-    <TabPanel value="tab2"><p>Panel 2</p></TabPanel>
-    <TabPanel value="tab3"><p>Panel 3</p></TabPanel>
+    <TabPanel value="tab1">
+      <p>Panel 1</p>
+    </TabPanel>
+    <TabPanel value="tab2">
+      <p>Panel 2</p>
+    </TabPanel>
+    <TabPanel value="tab3">
+      <p>Panel 3</p>
+    </TabPanel>
   </Tabs>
 );
 KeyboardNavigation.storyName = 'Keyboard: Arrow key navigation';

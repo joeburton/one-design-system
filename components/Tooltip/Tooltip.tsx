@@ -60,11 +60,7 @@ export function Tooltip({ content, placement = 'top', delay = 0, children }: Too
         id={tooltipId}
         role="tooltip"
         aria-hidden={!visible}
-        className={cx(
-          styles.tooltip,
-          styles[`placement-${placement}`],
-          visible && styles.visible
-        )}
+        className={cx(styles.tooltip, styles[`placement-${placement}`], visible && styles.visible)}
       >
         {content}
       </span>

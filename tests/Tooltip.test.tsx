@@ -118,7 +118,9 @@ describe('Tooltip', () => {
         </Tooltip>
       );
       const wrapper = container.firstChild as HTMLElement;
-      act(() => { fireEvent.mouseEnter(wrapper); });
+      act(() => {
+        fireEvent.mouseEnter(wrapper);
+      });
       expect(screen.getByRole('tooltip', { hidden: true })).toHaveAttribute('aria-hidden', 'true');
       vi.useRealTimers();
     });
@@ -131,8 +133,12 @@ describe('Tooltip', () => {
         </Tooltip>
       );
       const wrapper = container.firstChild as HTMLElement;
-      act(() => { fireEvent.mouseEnter(wrapper); });
-      act(() => { vi.advanceTimersByTime(300); });
+      act(() => {
+        fireEvent.mouseEnter(wrapper);
+      });
+      act(() => {
+        vi.advanceTimersByTime(300);
+      });
       expect(screen.getByRole('tooltip', { hidden: true })).toHaveAttribute('aria-hidden', 'false');
       vi.useRealTimers();
     });

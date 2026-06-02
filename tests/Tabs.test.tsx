@@ -9,7 +9,9 @@ function renderTabs(defaultValue = 'a') {
       <TabList>
         <Tab value="a">Alpha</Tab>
         <Tab value="b">Beta</Tab>
-        <Tab value="c" disabled>Gamma</Tab>
+        <Tab value="c" disabled>
+          Gamma
+        </Tab>
       </TabList>
       <TabPanel value="a">Panel A</TabPanel>
       <TabPanel value="b">Panel B</TabPanel>
@@ -92,7 +94,16 @@ describe('Tabs', () => {
 
   describe('click interactions', () => {
     it('activates a tab on click', async () => {
-      const { user } = setup(<Tabs defaultValue="a"><TabList><Tab value="a">A</Tab><Tab value="b">B</Tab></TabList><TabPanel value="a">Panel A</TabPanel><TabPanel value="b">Panel B</TabPanel></Tabs>);
+      const { user } = setup(
+        <Tabs defaultValue="a">
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+          </TabList>
+          <TabPanel value="a">Panel A</TabPanel>
+          <TabPanel value="b">Panel B</TabPanel>
+        </Tabs>
+      );
       await user.click(screen.getByRole('tab', { name: /^b$/i }));
       expect(screen.getByRole('tab', { name: /^b$/i })).toHaveAttribute('aria-selected', 'true');
       expect(screen.getByRole('tabpanel', { name: /^b$/i })).not.toHaveAttribute('hidden');
@@ -102,7 +113,10 @@ describe('Tabs', () => {
       const onChange = vi.fn();
       const { user } = setup(
         <Tabs defaultValue="a" onChange={onChange}>
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab></TabList>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+          </TabList>
           <TabPanel value="a">Panel A</TabPanel>
           <TabPanel value="b">Panel B</TabPanel>
         </Tabs>
@@ -116,8 +130,14 @@ describe('Tabs', () => {
     it('moves focus right with ArrowRight', async () => {
       const { user } = setup(
         <Tabs defaultValue="a">
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab><Tab value="c">C</Tab></TabList>
-          <TabPanel value="a">A</TabPanel><TabPanel value="b">B</TabPanel><TabPanel value="c">C</TabPanel>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+            <Tab value="c">C</Tab>
+          </TabList>
+          <TabPanel value="a">A</TabPanel>
+          <TabPanel value="b">B</TabPanel>
+          <TabPanel value="c">C</TabPanel>
         </Tabs>
       );
       await user.tab();
@@ -129,8 +149,14 @@ describe('Tabs', () => {
     it('moves focus left with ArrowLeft', async () => {
       const { user } = setup(
         <Tabs defaultValue="b">
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab><Tab value="c">C</Tab></TabList>
-          <TabPanel value="a">A</TabPanel><TabPanel value="b">B</TabPanel><TabPanel value="c">C</TabPanel>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+            <Tab value="c">C</Tab>
+          </TabList>
+          <TabPanel value="a">A</TabPanel>
+          <TabPanel value="b">B</TabPanel>
+          <TabPanel value="c">C</TabPanel>
         </Tabs>
       );
       await user.tab();
@@ -141,8 +167,14 @@ describe('Tabs', () => {
     it('wraps from last to first with ArrowRight', async () => {
       const { user } = setup(
         <Tabs defaultValue="c">
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab><Tab value="c">C</Tab></TabList>
-          <TabPanel value="a">A</TabPanel><TabPanel value="b">B</TabPanel><TabPanel value="c">C</TabPanel>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+            <Tab value="c">C</Tab>
+          </TabList>
+          <TabPanel value="a">A</TabPanel>
+          <TabPanel value="b">B</TabPanel>
+          <TabPanel value="c">C</TabPanel>
         </Tabs>
       );
       await user.tab();
@@ -153,8 +185,14 @@ describe('Tabs', () => {
     it('jumps to first tab with Home', async () => {
       const { user } = setup(
         <Tabs defaultValue="c">
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab><Tab value="c">C</Tab></TabList>
-          <TabPanel value="a">A</TabPanel><TabPanel value="b">B</TabPanel><TabPanel value="c">C</TabPanel>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+            <Tab value="c">C</Tab>
+          </TabList>
+          <TabPanel value="a">A</TabPanel>
+          <TabPanel value="b">B</TabPanel>
+          <TabPanel value="c">C</TabPanel>
         </Tabs>
       );
       await user.tab();
@@ -165,8 +203,14 @@ describe('Tabs', () => {
     it('jumps to last tab with End', async () => {
       const { user } = setup(
         <Tabs defaultValue="a">
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab><Tab value="c">C</Tab></TabList>
-          <TabPanel value="a">A</TabPanel><TabPanel value="b">B</TabPanel><TabPanel value="c">C</TabPanel>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+            <Tab value="c">C</Tab>
+          </TabList>
+          <TabPanel value="a">A</TabPanel>
+          <TabPanel value="b">B</TabPanel>
+          <TabPanel value="c">C</TabPanel>
         </Tabs>
       );
       await user.tab();
@@ -177,8 +221,12 @@ describe('Tabs', () => {
     it('uses ArrowDown/ArrowUp for vertical orientation', async () => {
       const { user } = setup(
         <Tabs defaultValue="a" orientation="vertical">
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab></TabList>
-          <TabPanel value="a">A</TabPanel><TabPanel value="b">B</TabPanel>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+          </TabList>
+          <TabPanel value="a">A</TabPanel>
+          <TabPanel value="b">B</TabPanel>
         </Tabs>
       );
       await user.tab();
@@ -191,7 +239,10 @@ describe('Tabs', () => {
     it('does not render inactive panels when lazy=true', () => {
       render(
         <Tabs defaultValue="a" lazy>
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab></TabList>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+          </TabList>
           <TabPanel value="a">Panel A</TabPanel>
           <TabPanel value="b">Panel B</TabPanel>
         </Tabs>
@@ -202,7 +253,10 @@ describe('Tabs', () => {
     it('renders panel content when tab is activated with lazy=true', async () => {
       const { user } = setup(
         <Tabs defaultValue="a" lazy>
-          <TabList><Tab value="a">A</Tab><Tab value="b">B</Tab></TabList>
+          <TabList>
+            <Tab value="a">A</Tab>
+            <Tab value="b">B</Tab>
+          </TabList>
           <TabPanel value="a">Panel A</TabPanel>
           <TabPanel value="b">Panel B</TabPanel>
         </Tabs>

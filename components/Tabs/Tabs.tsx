@@ -70,11 +70,10 @@ export function Tabs({
   );
 
   return (
-    <TabsContext.Provider value={{ activeValue, setActiveValue, orientation, baseId, lazy, registeredTabs }}>
-      <div
-        className={cx(styles.root, styles[`orientation-${orientation}`], className)}
-        {...rest}
-      >
+    <TabsContext.Provider
+      value={{ activeValue, setActiveValue, orientation, baseId, lazy, registeredTabs }}
+    >
+      <div className={cx(styles.root, styles[`orientation-${orientation}`], className)} {...rest}>
         {children}
       </div>
     </TabsContext.Provider>
@@ -114,7 +113,14 @@ export interface TabProps extends Omit<HTMLAttributes<HTMLButtonElement>, 'value
   children: ReactNode;
 }
 
-export function Tab({ value, disabled = false, className, children, onKeyDown, ...rest }: TabProps) {
+export function Tab({
+  value,
+  disabled = false,
+  className,
+  children,
+  onKeyDown,
+  ...rest
+}: TabProps) {
   const { activeValue, setActiveValue, orientation, baseId, registeredTabs } = useTabsContext();
   const isActive = activeValue === value;
 
@@ -162,7 +168,12 @@ export function Tab({ value, disabled = false, className, children, onKeyDown, .
       aria-controls={`${baseId}-panel-${value}`}
       tabIndex={isActive ? 0 : -1}
       disabled={disabled}
-      className={cx(styles.tab, isActive && styles.tabActive, disabled && styles.tabDisabled, className)}
+      className={cx(
+        styles.tab,
+        isActive && styles.tabActive,
+        disabled && styles.tabDisabled,
+        className
+      )}
       onClick={() => !disabled && setActiveValue(value)}
       onKeyDown={handleKeyDown}
       {...rest}
