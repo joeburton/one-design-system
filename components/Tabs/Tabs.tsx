@@ -90,48 +90,13 @@ export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function TabList({ className, children, ...rest }: TabListProps) {
-  const { orientation, baseId, setActiveValue, registeredTabs } = useTabsContext();
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    const tabs = registeredTabs.current;
-    const focused = document.activeElement;
-    const focusedIndex = tabs.findIndex(
-      (v) => document.getElementById(`${baseId}-tab-${v}`) === focused
-    );
-    if (focusedIndex === -1) return;
-
-    const isHorizontal = orientation === 'horizontal';
-    const prev = isHorizontal ? 'ArrowLeft' : 'ArrowUp';
-    const next = isHorizontal ? 'ArrowRight' : 'ArrowDown';
-
-    let target = -1;
-    if (e.key === prev) {
-      e.preventDefault();
-      target = focusedIndex === 0 ? tabs.length - 1 : focusedIndex - 1;
-    } else if (e.key === next) {
-      e.preventDefault();
-      target = focusedIndex === tabs.length - 1 ? 0 : focusedIndex + 1;
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      target = 0;
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      target = tabs.length - 1;
-    }
-
-    if (target !== -1) {
-      const targetEl = document.getElementById(`${baseId}-tab-${tabs[target]}`);
-      targetEl?.focus();
-      setActiveValue(tabs[target]);
-    }
-  };
+  const { orientation } = useTabsContext();
 
   return (
     <div
       role="tablist"
       aria-orientation={orientation}
       className={cx(styles.tabList, className)}
-      onKeyDown={handleKeyDown}
       {...rest}
     >
       {children}
@@ -149,14 +114,45 @@ export interface TabProps extends Omit<HTMLAttributes<HTMLButtonElement>, 'value
   children: ReactNode;
 }
 
-export function Tab({ value, disabled = false, className, children, ...rest }: TabProps) {
-  const { activeValue, setActiveValue, baseId, registeredTabs } = useTabsContext();
+export function Tab({ value, disabled = false, className, children, onKeyDown, ...rest }: TabProps) {
+  const { activeValue, setActiveValue, orientation, baseId, registeredTabs } = useTabsContext();
   const isActive = activeValue === value;
 
-  // Register tab value in order for keyboard navigation
   if (!registeredTabs.current.includes(value)) {
     registeredTabs.current.push(value);
   }
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    const tabs = registeredTabs.current;
+    const currentIndex = tabs.indexOf(value);
+    if (currentIndex === -1) return;
+
+    const isHorizontal = orientation === 'horizontal';
+    const prev = isHorizontal ? 'ArrowLeft' : 'ArrowUp';
+    const next = isHorizontal ? 'ArrowRight' : 'ArrowDown';
+
+    let target = -1;
+    if (e.key === prev) {
+      e.preventDefault();
+      target = currentIndex === 0 ? tabs.length - 1 : currentIndex - 1;
+    } else if (e.key === next) {
+      e.preventDefault();
+      target = currentIndex === tabs.length - 1 ? 0 : currentIndex + 1;
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      target = 0;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      target = tabs.length - 1;
+    }
+
+    if (target !== -1) {
+      document.getElementById(`${baseId}-tab-${tabs[target]}`)?.focus();
+      setActiveValue(tabs[target]);
+    }
+
+    onKeyDown?.(e);
+  };
 
   return (
     <button
@@ -168,6 +164,7 @@ export function Tab({ value, disabled = false, className, children, ...rest }: T
       disabled={disabled}
       className={cx(styles.tab, isActive && styles.tabActive, disabled && styles.tabDisabled, className)}
       onClick={() => !disabled && setActiveValue(value)}
+      onKeyDown={handleKeyDown}
       {...rest}
     >
       {children}
