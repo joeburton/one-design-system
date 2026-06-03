@@ -1,0 +1,69 @@
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: var(--ds-zIndex-tooltip);
+  max-width: 240px;
+  padding: var(--ds-spacing-component-xs) var(--ds-spacing-component-sm);
+  background-color: var(--ds-color-background-emphasis);
+  color: var(--ds-color-text-onEmphasis);
+  border-radius: var(--ds-borderRadius-tooltip);
+  box-shadow: var(--ds-elevation-sm);
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-xs);
+  line-height: var(--ds-typography-lineHeight-normal);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.95;
+  transition:
+    opacity var(--ds-transition-fast),
+    scale var(--ds-transition-fast);
+}
+
+.visible {
+  opacity: 1;
+  scale: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+}
+
+/* Placement: top (default) */
+.placement-top {
+  bottom: calc(100% + var(--ds-spacing-component-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+}
+
+/* Placement: bottom */
+.placement-bottom {
+  top: calc(100% + var(--ds-spacing-component-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: top center;
+}
+
+/* Placement: left */
+.placement-left {
+  right: calc(100% + var(--ds-spacing-component-xs));
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: right center;
+}
+
+/* Placement: right */
+.placement-right {
+  left: calc(100% + var(--ds-spacing-component-xs));
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}

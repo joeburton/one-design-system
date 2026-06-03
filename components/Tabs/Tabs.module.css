@@ -1,0 +1,110 @@
+.root {
+  display: flex;
+}
+
+.orientation-horizontal {
+  flex-direction: column;
+}
+
+.orientation-vertical {
+  flex-direction: row;
+  gap: var(--ds-spacing-component-md);
+}
+
+/* ── Tab List ── */
+
+.tabList {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--ds-color-border-default);
+}
+
+.orientation-vertical .tabList {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 2px solid var(--ds-color-border-default);
+  min-width: 160px;
+}
+
+/* ── Tab ── */
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-component-xs);
+  padding: var(--ds-spacing-component-sm) var(--ds-spacing-component-md);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-sm);
+  font-weight: var(--ds-typography-fontWeight-medium);
+  color: var(--ds-color-text-subtle);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color var(--ds-transition-fast),
+    border-color var(--ds-transition-fast);
+  outline: none;
+}
+.tab:hover:not(.tabDisabled) {
+  color: var(--ds-color-text-default);
+}
+.tab:focus-visible {
+  border-radius: var(--ds-borderRadius-button);
+  box-shadow:
+    0 0 0 2px var(--ds-color-background-default),
+    0 0 0 4px var(--ds-color-border-focus);
+}
+
+.tabActive {
+  color: var(--ds-color-brand-primary);
+  border-bottom-color: var(--ds-color-brand-primary);
+}
+
+.tabDisabled {
+  opacity: var(--ds-opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* Vertical tab indicator */
+.orientation-vertical .tab {
+  border-bottom: none;
+  border-right: 2px solid transparent;
+  margin-bottom: 0;
+  margin-right: -2px;
+  text-align: left;
+  width: 100%;
+  justify-content: flex-start;
+}
+.orientation-vertical .tabActive {
+  border-right-color: var(--ds-color-brand-primary);
+}
+
+/* ── Tab Panel ── */
+
+.tabPanel {
+  padding: var(--ds-spacing-component-md) 0;
+  outline: none;
+  color: var(--ds-color-text-default);
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-sm);
+  line-height: var(--ds-typography-lineHeight-normal);
+}
+.tabPanel:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--ds-color-background-default),
+    0 0 0 4px var(--ds-color-border-focus);
+  border-radius: var(--ds-borderRadius-button);
+}
+
+.orientation-vertical .tabPanel {
+  padding: 0;
+  flex: 1;
+}
+
+.tabPanelActive {
+  display: block;
+}

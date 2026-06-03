@@ -101,7 +101,14 @@ function renderTypedVars(vars: FlatMap): string {
     .map((name) => `  '${name}': \`var(${name})\``)
     .join(',\n');
 
-  return `/**\n * AUTO-GENERATED — do not edit.\n * Run: npm run tokens:build\n */\n\n${consts}\n\nexport const tokenVars = {\n${map}\n} as const;\n\nexport type TokenVarKey = keyof typeof tokenVars;\nexport type TokenVarValue = (typeof tokenVars)[TokenVarKey];\n`;
+  // Breakpoints need actual values exported as JS constants — CSS custom properties
+  // cannot be used in media queries.
+  const bpEntries = Object.entries(vars).filter(([k]) => k.startsWith('--ds-breakpoint-'));
+  const breakpointSection = bpEntries.length
+    ? `\n// Breakpoints as JS constants (CSS custom properties cannot be used in media queries)\nexport const breakpoints = {\n${bpEntries.map(([k, v]) => `  '${k.replace('--ds-breakpoint-', '')}': '${v}'`).join(',\n')}\n} as const;\n\nexport type BreakpointKey = keyof typeof breakpoints;\n`
+    : '';
+
+  return `/**\n * AUTO-GENERATED — do not edit.\n * Run: npm run tokens:build\n */\n\n${consts}\n\nexport const tokenVars = {\n${map}\n} as const;\n\nexport type TokenVarKey = keyof typeof tokenVars;\nexport type TokenVarValue = (typeof tokenVars)[TokenVarKey];\n${breakpointSection}`;
 }
 
 // ---------------------------------------------------------------------------

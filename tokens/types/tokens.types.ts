@@ -137,6 +137,30 @@ export type ElevationToken =
 
 export type TransitionToken = 'transition-fast' | 'transition-normal' | 'transition-slow';
 
+export type ZIndexToken =
+  | 'zIndex-hide'
+  | 'zIndex-base'
+  | 'zIndex-raised'
+  | 'zIndex-dropdown'
+  | 'zIndex-sticky'
+  | 'zIndex-overlay'
+  | 'zIndex-modal'
+  | 'zIndex-toast'
+  | 'zIndex-tooltip';
+
+export type OpacityToken = 'opacity-disabled' | 'opacity-muted' | 'opacity-overlay';
+
+export type BreakpointToken =
+  | 'breakpoint-sm'
+  | 'breakpoint-md'
+  | 'breakpoint-lg'
+  | 'breakpoint-xl'
+  | 'breakpoint-2xl';
+
+export type AnimationToken = 'animation-spin' | 'animation-pulse';
+
+export type EasingToken = 'easing-easeIn' | 'easing-easeOut' | 'easing-easeInOut';
+
 export type SemanticToken =
   | ColorBackgroundToken
   | ColorSurfaceToken
@@ -147,7 +171,12 @@ export type SemanticToken =
   | SpacingToken
   | BorderRadiusToken
   | ElevationToken
-  | TransitionToken;
+  | TransitionToken
+  | ZIndexToken
+  | OpacityToken
+  | BreakpointToken
+  | AnimationToken
+  | EasingToken;
 
 /** Build a typed CSS var() string from a semantic token */
 export type TokenVar<T extends SemanticToken> = `var(--ds-${T})`;
