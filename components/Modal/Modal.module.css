@@ -1,0 +1,143 @@
+/* ── Overlay (backdrop) ── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ds-zIndex-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ds-spacing-layout-sm);
+  background-color: rgb(0 0 0 / var(--ds-opacity-overlay));
+  opacity: 0;
+  transition: opacity var(--ds-transition-normal);
+}
+
+.overlayVisible {
+  opacity: 1;
+}
+
+.overlayFullscreen {
+  padding: 0;
+}
+
+/* ── Dialog ── */
+
+.dialog {
+  position: relative;
+  z-index: var(--ds-zIndex-modal);
+  background-color: var(--ds-color-surface-default);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-borderRadius-card);
+  box-shadow: var(--ds-elevation-xl);
+  width: 100%;
+  max-height: calc(100vh - 2 * var(--ds-spacing-layout-sm));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  transition:
+    opacity var(--ds-transition-normal),
+    transform var(--ds-transition-normal);
+}
+
+.dialogVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ── Size variants ── */
+
+.size-sm {
+  max-width: 400px;
+}
+
+.size-md {
+  max-width: 560px;
+}
+
+.size-lg {
+  max-width: 720px;
+}
+
+.size-fullscreen {
+  position: absolute;
+  inset: 0;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  border: none;
+}
+
+/* ── Header ── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-spacing-component-md);
+  padding: var(--ds-spacing-component-md) var(--ds-spacing-component-lg);
+  border-bottom: 1px solid var(--ds-color-border-default);
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-lg);
+  font-weight: var(--ds-typography-fontWeight-semibold);
+  color: var(--ds-color-text-default);
+  line-height: var(--ds-typography-lineHeight-tight);
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--ds-borderRadius-button);
+  color: var(--ds-color-text-subtle);
+  cursor: pointer;
+  transition:
+    color var(--ds-transition-fast),
+    background-color var(--ds-transition-fast);
+}
+
+.closeButton:hover {
+  color: var(--ds-color-text-default);
+  background-color: var(--ds-color-background-muted);
+}
+
+.closeButton:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--ds-color-background-default),
+    0 0 0 4px var(--ds-color-border-focus);
+}
+
+/* ── Body ── */
+
+.body {
+  padding: var(--ds-spacing-component-lg);
+  flex: 1;
+  overflow-y: auto;
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-sm);
+  color: var(--ds-color-text-default);
+  line-height: var(--ds-typography-lineHeight-normal);
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .dialog {
+    transition: none;
+  }
+}
