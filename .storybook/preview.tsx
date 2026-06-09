@@ -19,7 +19,7 @@ const withTheme: Decorator = (Story, context) => {
       <div
         style={{
           padding: '2rem',
-          minHeight: '100vh',
+          minHeight: 'unset',
           background: 'var(--ds-color-background-default)',
           color: 'var(--ds-color-text-default)',
           fontFamily: 'var(--ds-typography-fontFamily-body)',
