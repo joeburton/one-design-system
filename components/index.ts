@@ -105,3 +105,7 @@ export type {
   TabPanelProps,
   TabsOrientation,
 } from './Tabs/Tabs';
+
+// Modal
+export { Modal } from './Modal/Modal';
+export type { ModalProps, ModalSize } from './Modal/Modal';
