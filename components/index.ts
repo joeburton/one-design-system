@@ -109,3 +109,7 @@ export type {
 // Modal
 export { Modal } from './Modal/Modal';
 export type { ModalProps, ModalSize } from './Modal/Modal';
+
+// Toast
+export { ToastProvider, useToast } from './Toast/Toast';
+export type { ToastProviderProps, ToastOptions, ToastVariant, ToastPosition } from './Toast/Toast';
