@@ -1,0 +1,257 @@
+/* ============================================================
+   Toast.module.css
+   ============================================================ */
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+
+@keyframes toastInRight {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + var(--ds-spacing-layout-sm)));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(calc(100% + var(--ds-spacing-layout-sm)));
+  }
+}
+
+@keyframes toastInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastOutTop {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes toastInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastOutBottom {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+
+.container {
+  position: fixed;
+  z-index: var(--ds-zIndex-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-component-sm);
+  width: 360px;
+  max-width: calc(100vw - 2 * var(--ds-spacing-layout-sm));
+  pointer-events: none;
+}
+
+.container > * {
+  pointer-events: auto;
+}
+
+/* ── Position variants ─────────────────────────────────────── */
+
+.position-top-right {
+  top: var(--ds-spacing-layout-sm);
+  right: var(--ds-spacing-layout-sm);
+}
+
+.position-bottom-right {
+  bottom: var(--ds-spacing-layout-sm);
+  right: var(--ds-spacing-layout-sm);
+}
+
+.position-top-center {
+  top: var(--ds-spacing-layout-sm);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.position-bottom-center {
+  bottom: var(--ds-spacing-layout-sm);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Toast item ────────────────────────────────────────────── */
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-spacing-component-sm);
+  padding: var(--ds-spacing-component-md);
+  background-color: var(--ds-color-surface-default);
+  border: 1px solid var(--ds-color-border-default);
+  border-left-width: 3px;
+  border-radius: var(--ds-borderRadius-card);
+  box-shadow: var(--ds-elevation-lg);
+  font-family: var(--ds-typography-fontFamily-body);
+  font-size: var(--ds-typography-fontSize-sm);
+  line-height: var(--ds-typography-lineHeight-normal);
+  color: var(--ds-color-text-default);
+}
+
+/* ── Enter animations (position-aware) ─────────────────────── */
+
+.position-top-right .toast,
+.position-bottom-right .toast {
+  animation: toastInRight var(--ds-transition-normal) forwards;
+}
+
+.position-top-center .toast {
+  animation: toastInTop var(--ds-transition-normal) forwards;
+}
+
+.position-bottom-center .toast {
+  animation: toastInBottom var(--ds-transition-normal) forwards;
+}
+
+/* ── Exit animations — same specificity, must come after enter ─ */
+
+.position-top-right .exiting,
+.position-bottom-right .exiting {
+  animation: toastOutRight var(--ds-transition-normal) forwards;
+}
+
+.position-top-center .exiting {
+  animation: toastOutTop var(--ds-transition-normal) forwards;
+}
+
+.position-bottom-center .exiting {
+  animation: toastOutBottom var(--ds-transition-normal) forwards;
+}
+
+/* ── Variant accent borders ────────────────────────────────── */
+
+.variant-info {
+  border-left-color: var(--ds-color-status-info);
+}
+
+.variant-info .icon {
+  color: var(--ds-color-status-info);
+}
+
+.variant-success {
+  border-left-color: var(--ds-color-status-success);
+}
+
+.variant-success .icon {
+  color: var(--ds-color-status-success);
+}
+
+.variant-warning {
+  border-left-color: var(--ds-color-status-warning);
+}
+
+.variant-warning .icon {
+  color: var(--ds-color-status-warning);
+}
+
+.variant-error {
+  border-left-color: var(--ds-color-status-error);
+}
+
+.variant-error .icon {
+  color: var(--ds-color-status-error);
+}
+
+/* ── Sub-elements ──────────────────────────────────────────── */
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-component-xs);
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--ds-typography-fontWeight-semibold);
+  font-size: var(--ds-typography-fontSize-sm);
+  color: var(--ds-color-text-default);
+}
+
+.description {
+  margin: 0;
+  color: var(--ds-color-text-subtle);
+}
+
+.dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: var(--ds-color-text-subtle);
+  opacity: var(--ds-opacity-muted);
+  border-radius: var(--ds-borderRadius-sm);
+  transition: opacity var(--ds-transition-fast);
+  margin-top: 1px;
+}
+
+.dismiss:hover {
+  opacity: 1;
+}
+
+.dismiss:focus-visible {
+  outline: 2px solid var(--ds-color-border-focus);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .exiting {
+    animation: none;
+  }
+}
